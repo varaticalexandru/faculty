@@ -1,0 +1,6 @@
+nume1 10
+nume2 9
+nume3 6
+nume4 5
+nume5 7
+nume6 8
