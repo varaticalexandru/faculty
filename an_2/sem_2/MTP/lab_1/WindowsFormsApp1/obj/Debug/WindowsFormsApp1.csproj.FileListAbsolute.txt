@@ -1,0 +1,11 @@
+D:\UPT_AC\Licenta\An_2\Sem_2\MTP\lab_1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+D:\UPT_AC\Licenta\An_2\Sem_2\MTP\lab_1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+D:\UPT_AC\Licenta\An_2\Sem_2\MTP\lab_1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+D:\UPT_AC\Licenta\An_2\Sem_2\MTP\lab_1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+D:\UPT_AC\Licenta\An_2\Sem_2\MTP\lab_1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.SuggestedBindingRedirects.cache
+D:\UPT_AC\Licenta\An_2\Sem_2\MTP\lab_1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+D:\UPT_AC\Licenta\An_2\Sem_2\MTP\lab_1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+D:\UPT_AC\Licenta\An_2\Sem_2\MTP\lab_1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+D:\UPT_AC\Licenta\An_2\Sem_2\MTP\lab_1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+D:\UPT_AC\Licenta\An_2\Sem_2\MTP\lab_1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+D:\UPT_AC\Licenta\An_2\Sem_2\MTP\lab_1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

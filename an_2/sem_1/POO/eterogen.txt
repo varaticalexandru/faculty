@@ -1,0 +1,214 @@
+// clasa template : lista eterogena
+template <class T> class lista
+{
+private:
+    T* head;
+    T* tail;
+    T* point;
+
+protected:
+
+public:
+    lista();
+    ~lista();
+    void eliberare();
+    T* getHead();
+    T* getTail();
+    T* getNext();
+    void adaugareOrdine(T* a);
+    void adaugareFata(T* a);
+    void adaugareSpate(T* a);
+    void afisare();
+    T* cautare(string nume);
+    int stergere(string nume);
+};
+
+// constructor: initializare lista
+template <class T> lista<T>::lista()
+{
+    head = NULL;
+    tail = NULL;
+}
+
+// elibereaza/sterge lista
+template <class T> void lista<T>::eliberare()
+{
+    if (!head)      // daca lista e vida
+        return;
+    
+    T* p = NULL, *q = NULL;
+
+    p = head;
+    while (p) {
+        q = p->next;
+        delete p;
+        p = q;
+    }
+
+    head = NULL;
+    tail = NULL;
+}
+
+// destructor: stergere/eliberare lista
+template <class T> lista<T>::~lista()
+{
+    eliberare();
+}
+
+// returneaza capul listei
+template <class T> T* lista<T>::getHead()
+{
+    point = head;
+    return point;
+}
+
+// returneaza coada listei
+template <class T> T* lista<T>::getTail()
+{
+    point = tail;
+    return point;
+}
+
+// returneaza urmatorul nod din lista
+template <class T> T* lista<T>::getNext()
+{
+    if (point)
+        point = point->next;
+    return point;
+}
+
+// afisare lista
+template <class T> void lista<T>::afisare()
+{
+    if (!head) {
+        cout << "Lista e vida.\n";
+        return;
+    }
+
+    T* p = NULL;
+    
+    p = head;
+    while (p) {
+        p->afisare();
+        p = p->next;
+    }
+}
+
+// adaugare nod in ordine
+template <class T> void lista<T>::adaugareOrdine(T* a)
+{
+    if (!head) {    // daca lista e vida
+        head = a;
+        tail = head;
+        return;
+    }
+
+    if (a->producator < head->producator) {     // daca nodul adaugat < capul listei (primul nod)
+        a->next = head;
+        head = a;
+    }
+    else if (a->producator > tail->producator) {        // daca nodul adaugat > coada listei (ultimul nod)
+        tail->next = a;
+        tail = a;
+    }
+    else {                          // daca nodul adaugat e in interiorul listei
+
+        T* p = NULL, *q = NULL;
+
+        // gasim pozitia pentru inserat
+        p = head;
+        while (p->next && a->producator > p->next->producator)
+            p = p->next;
+        
+        // insearam nodul
+        a->next = p->next;
+        p->next = a;
+    }
+}
+
+// adaugare nod in fata
+template <class T> void lista<T>::adaugareFata(T* a)
+{
+    if (!head) {        // daca lista e vida
+        head = a;
+        tail = head;
+        return;
+    }
+
+    // inseram nodul
+    a->next = head;
+    head = a;
+}
+
+// adaugare nod in spate
+template <class T> void lista<T>::adaugareSpate(T* a)
+{
+     if (!head) {        // daca lista e vida
+        head = a;
+        tail = head;
+        return;
+    }
+
+    // inseram nodul
+    tail->next = a;
+    tail = a;
+}
+
+// cautare nod in lista
+template <class T> T* lista<T>::cautare(string nume)
+{
+    if (!head) {        // daca lista e vida
+        return NULL;
+    }
+
+    if (head->producator == nume)     // daca nodul cautat e capul listei
+        return head;
+
+    if (tail->producator == nume)     // daca nodul cautat e capul listei
+        return tail;
+    
+    T* p = NULL;
+
+    p = head;
+    while (p && !(p->producator == nume))
+        p = p->next;
+    
+    if (p->numproducatore == nume)
+        return p;
+    
+    return NULL;
+}
+
+// stergere nod din lista
+template <class T> int lista<T>::stergere(string nume)
+{
+    if (!head) {
+        cout << "Lista e vida.\n";
+        return 0;
+    }
+     T* p = NULL, *q = NULL;
+
+    if (head->nume == nume) {       // daca se sterge capul listei (primul nod)
+        q = head;
+        head = head->next;
+        delete q;
+        return 1;
+    }
+
+    while (p->next && !(p->next->nume == nume))
+        p = p->next;
+    
+    if (p->next->nume == nume) {
+        q = p->next;
+        p->next = p->next->next;
+
+        if (q == tail)      // daca se sterge coada listei (ultimul nod)
+            tail = p;
+
+        delete q;
+        return 1;
+    }
+
+    return 0;
+}
+

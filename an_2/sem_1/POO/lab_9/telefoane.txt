@@ -1,0 +1,5 @@
+f galaxy_fold samsung white 123x432
+m nova_5 huawei blue android_10
+f optimus_g lg black 980x123
+m nova_y huawei red android_11
+m razer_x motorolla white android_12

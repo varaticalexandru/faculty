@@ -1,0 +1,6 @@
+m samsung 3400 5
+a lg 1200 inductie
+m candy 5000 7
+a gorenje 3451 gaz
+m arctic 9999 9
+a sasamba 122 gaz

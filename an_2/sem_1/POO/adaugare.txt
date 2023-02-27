@@ -1,0 +1,23 @@
+if (vector.empty())
+{
+    vector.push_back(node);
+}
+else
+{
+    auto it = vector.begin();
+    for(auto series_node:vector)
+    {
+
+        if (series_node.getName() > name)
+        {
+            vector.insert(it, node);
+                break;
+        }
+        it++;
+        if(it == vector.end())
+        {
+            vector.push_back(node);
+            break;
+        }
+    }
+}

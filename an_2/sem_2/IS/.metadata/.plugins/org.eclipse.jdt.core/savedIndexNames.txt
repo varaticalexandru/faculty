@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+D:\UPT_AC\Licenta\An_2\Sem_2\IS\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+3279434529.index
+3131464403.index

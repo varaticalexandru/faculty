@@ -1,0 +1,157 @@
+// clasa template : lista omogena
+template <class T> class lista
+{
+    T* head;
+    T* tail;
+    T* point;
+
+    public:
+        lista();
+        ~lista();
+        void adaugare(T* a);
+        T* cautare(string nume);
+        T* cautareSisOper(string sis_oper);
+        int stergere(string nume);
+        T* getHead();
+        T* getNext();
+        int vida();
+        void elibereaza();
+        void afisare();
+};
+
+// initializare lista
+template <class T> lista<T>::lista()
+{
+    head = NULL;
+    tail = NULL;
+}
+
+template <class T> void lista<T>::elibereaza()
+{
+    T* p = NULL, *q = NULL;
+
+    for (p = head; p; p = q) {
+        q = p->next;
+        delete p;
+    }
+    head = NULL;
+    tail = NULL;
+}
+
+// destructor (sterge lista)
+template <class T> lista<T>::~lista()
+{
+    elibereaza();
+}
+
+// adaugare nod in lista (in spate)
+template <class T> void lista<T>::adaugare(T* a)
+{
+    if (!head) {    // daca lista e vida
+        head = a;
+        tail = head;
+    }
+    else {
+        // ultimul nod (locul insertiei)
+        tail->next = a;
+        tail = a;
+    }
+
+    tail->next = NULL;
+    
+}
+
+// cautare nod in lista
+template <class T> T* lista<T>::cautare(string nume)
+{
+    T* p = NULL;
+
+    for (p = head; p; p = p->next)
+        if (p->nume == nume)
+            break;
+    
+    return p;
+}
+
+// stergere nod din lista
+template <class T> int lista<T>::stergere(string nume)
+{
+    T* p = NULL;
+    T* q = NULL;
+    
+    if (!head) {    // daca lista e vida
+        cout << "Lista e vida.\n";
+        return 0;
+    }
+    
+    if (head->nume == nume) {       // daca se sterge capul listei
+        q = head;
+        head = head->next;
+        delete q;
+        return 1;
+    }
+    else {                          // daca nu e primul nod
+        for (p = head; p->next; p = p->next)
+        if (p->next->nume == nume)
+            break;
+
+        q = p->next;                // se tine nodul de sters
+        p->next = p->next->next;
+        
+        if (q == tail)              // daca se sterge coada (ultimul nod)
+            tail = p;
+
+        delete q;
+        return 1;
+    }
+
+    return 0;
+}
+
+// primul nod din lista (capul)
+template <class T> T* lista<T>::getHead()
+{
+    point = head;
+    return point;
+}
+
+// urmatorul nod din lista (next)
+template <class T> T* lista<T>::getNext()
+{
+    if (point)
+        point = point->next;
+
+    return point;
+}
+
+// testeaza daca lista e vida
+template <class T> int lista<T>::vida()
+{
+    return (!head) ? 1 : 0;
+}
+
+// afisare lista
+template <class T> void lista<T>::afisare()
+{
+    T* p = NULL;
+
+    if (!head) {
+        cout << "Lista vida.\n";
+        return;
+    }
+
+    for (p = head; p; p = p->next)
+        p->afisare();
+}
+
+// cautare nod in lista (dupa sistemul de operare)
+template <class T> T* lista<T>::cautareSisOper(string sis_oper)
+{
+    T* p = NULL;
+
+    for (p = head; p; p = p->next)
+        if (p->sis_oper == sis_oper)
+            break;
+    
+    return p;
+}
