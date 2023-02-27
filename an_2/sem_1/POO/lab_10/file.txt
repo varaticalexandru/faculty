@@ -1,0 +1,5 @@
+f samsung white 123x123
+m lg black android
+m logitech red linux
+f alactel purple 987
+m iphone blue ios

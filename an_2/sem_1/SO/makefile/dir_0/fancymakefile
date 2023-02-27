@@ -1,0 +1,14 @@
+CE=c
+TARGET=main.o dependency.o
+
+runme: $(TARGET)
+	gcc -o runme dependency.o main.o
+
+main.o: main.$(CE)
+	gcc -c main.$(CE)
+
+dependency.o: dependency.$(CE)
+	gcc -c dependency.$(CE)
+
+clean:
+	/bin/rm -f *.o

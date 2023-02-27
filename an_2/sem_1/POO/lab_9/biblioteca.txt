@@ -1,0 +1,7 @@
+d Informatica
+c Vasile_Stoicu_Tivadar Programare_Orientata_Obiecte XC32 Politehnica 2002 5 10 12 2019
+d Literatura
+c Ion_Creanga Amintiri_din_Copilarie A123 Humanitas 1990 1 19 12 2010
+c Mihai_Eminescu Poezii 1C56 Art 1996 2 10 12 2019
+d Matematica
+c Marin_Ana Algebra 1C6 Orizont 2010 6 10 12 2019
