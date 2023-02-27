@@ -12,3 +12,17 @@ D:\UPT_AC\Licenta\An_2\Sem_2\MTP\lab_1\calculator\obj\Debug\calculator.pdb
 D:\UPT_AC\Licenta\An_2\Sem_2\MTP\lab_1\calculator\bin\Debug\Z.Expressions.Eval.dll
 D:\UPT_AC\Licenta\An_2\Sem_2\MTP\lab_1\calculator\bin\Debug\Z.Expressions.Eval.xml
 D:\UPT_AC\Licenta\An_2\Sem_2\MTP\lab_1\calculator\obj\Debug\calculator.csproj.CopyComplete
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_1\calculator\bin\Debug\calculator.exe.config
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_1\calculator\bin\Debug\calculator.exe
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_1\calculator\bin\Debug\calculator.pdb
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_1\calculator\bin\Debug\Z.Expressions.Eval.dll
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_1\calculator\bin\Debug\Z.Expressions.Eval.xml
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_1\calculator\obj\Debug\calculator.csproj.AssemblyReference.cache
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_1\calculator\obj\Debug\calculator.csproj.SuggestedBindingRedirects.cache
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_1\calculator\obj\Debug\calculator.calculatorForm.resources
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_1\calculator\obj\Debug\calculator.Properties.Resources.resources
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_1\calculator\obj\Debug\calculator.csproj.GenerateResource.cache
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_1\calculator\obj\Debug\calculator.csproj.CoreCompileInputs.cache
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_1\calculator\obj\Debug\calculator.csproj.CopyComplete
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_1\calculator\obj\Debug\calculator.exe
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_1\calculator\obj\Debug\calculator.pdb
