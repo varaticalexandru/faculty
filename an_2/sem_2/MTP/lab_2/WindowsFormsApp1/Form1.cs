@@ -26,8 +26,6 @@ namespace WindowsFormsApp1
                 string dirName = (new DirectoryInfo(dirPath)).Name;
                 claseComboBox.Items.Add(dirName);
 
-                Button button = new Button();
-
             }
         }
 
@@ -70,7 +68,12 @@ namespace WindowsFormsApp1
             dateListBox.Items.Clear();
 
             Button btn = (Button)sender;
-            Persoana p = 
+            Persoana p = (Persoana) btn.Tag;
+
+            dateListBox.Items.Add($"Nume: {(string) p.Nume}");
+            dateListBox.Items.Add($"CNP: {(string) p.Cnp}");
+            dateListBox.Items.Add($"Adresa: {(string) p.Adresa}");
+
         }
 
         public Form1()
@@ -81,15 +84,14 @@ namespace WindowsFormsApp1
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void claseComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             incarcaEleviClasa(claseComboBox.Text);
         }
+
+       
     }
 }

@@ -1,0 +1,15 @@
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_3\bin\Debug\net7.0\ex_3.exe
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_3\bin\Debug\net7.0\ex_3.deps.json
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_3\bin\Debug\net7.0\ex_3.runtimeconfig.json
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_3\bin\Debug\net7.0\ex_3.dll
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_3\bin\Debug\net7.0\ex_3.pdb
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_3\obj\Debug\net7.0\ex_3.csproj.AssemblyReference.cache
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_3\obj\Debug\net7.0\ex_3.GeneratedMSBuildEditorConfig.editorconfig
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_3\obj\Debug\net7.0\ex_3.AssemblyInfoInputs.cache
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_3\obj\Debug\net7.0\ex_3.AssemblyInfo.cs
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_3\obj\Debug\net7.0\ex_3.csproj.CoreCompileInputs.cache
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_3\obj\Debug\net7.0\ex_3.dll
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_3\obj\Debug\net7.0\refint\ex_3.dll
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_3\obj\Debug\net7.0\ex_3.pdb
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_3\obj\Debug\net7.0\ex_3.genruntimeconfig.cache
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_3\obj\Debug\net7.0\ref\ex_3.dll

@@ -65,7 +65,7 @@ public class MainClass {
 
         Vers[] lyrics = readLyrics(in_file);
 
-
+        processLyrics(lyrics, out_file);
 
         br.close();
 

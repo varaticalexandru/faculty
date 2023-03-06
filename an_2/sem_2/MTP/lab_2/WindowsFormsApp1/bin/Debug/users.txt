@@ -1,0 +1,5 @@
+alex007:passwd01
+danu123:passwd02
+mihai1337:passwd03
+salim666:passwd04
+mishka111:passwd05

@@ -1,0 +1,11 @@
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_7\bin\Debug\ex_7.exe.config
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_7\bin\Debug\ex_7.exe
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_7\bin\Debug\ex_7.pdb
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_7\obj\Debug\ex_7.csproj.AssemblyReference.cache
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_7\obj\Debug\ex_7.csproj.SuggestedBindingRedirects.cache
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_7\obj\Debug\ex_7.LPF.resources
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_7\obj\Debug\ex_7.Properties.Resources.resources
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_7\obj\Debug\ex_7.csproj.GenerateResource.cache
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_7\obj\Debug\ex_7.csproj.CoreCompileInputs.cache
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_7\obj\Debug\ex_7.exe
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_7\obj\Debug\ex_7.pdb

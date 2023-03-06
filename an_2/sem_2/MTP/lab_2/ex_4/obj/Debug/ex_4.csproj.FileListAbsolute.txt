@@ -1,0 +1,11 @@
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_4\bin\Debug\ex_4.exe.config
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_4\bin\Debug\ex_4.exe
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_4\bin\Debug\ex_4.pdb
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_4\obj\Debug\ex_4.csproj.AssemblyReference.cache
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_4\obj\Debug\ex_4.csproj.SuggestedBindingRedirects.cache
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_4\obj\Debug\ex_4.Form1.resources
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_4\obj\Debug\ex_4.Properties.Resources.resources
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_4\obj\Debug\ex_4.csproj.GenerateResource.cache
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_4\obj\Debug\ex_4.csproj.CoreCompileInputs.cache
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_4\obj\Debug\ex_4.exe
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_2\ex_4\obj\Debug\ex_4.pdb
