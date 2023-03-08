@@ -8,16 +8,29 @@ namespace ex_7
 {
     internal class Jucator
     {
+        // enumerare posturi jucator
+        internal enum post
+        {
+            default_ = 0,
+            Portar = 1,
+            Fundas = 2,
+            Mijlocas = 3,
+            Atacant = 4
+        }
+
+        // membri
         string nume;
         string cnp;
-        string post;
+        post pozitie;
 
-        // consstructor
-        public Jucator(string nume, string cnp, string post) 
+        
+
+        // constructor
+        public Jucator(string nume, string cnp, post pozitie) 
         {
             this.nume = nume;
             this.cnp = cnp;
-            this.post = post;
+            this.pozitie = pozitie;
         }
 
         // proprietati
@@ -25,7 +38,37 @@ namespace ex_7
 
         public string Cnp { get => cnp; set => cnp = value; }
 
-        public string Post { get => post; set => post = value; }
+        public post Pozitie { get => pozitie; set => pozitie = value; }
         
-    }
+        // conversie pozitie: string -> post (enum)
+        static public post stringToPost(string pozitie_string)
+        {
+            post pozitie = post.default_;
+
+            switch (pozitie_string)
+            {
+                case "Portar": // portar
+                    pozitie = post.Portar;
+                    break;
+
+                case "Fundas": // fundas
+                    pozitie = post.Fundas;
+                    break;
+
+                case "Mijlocas": // mijlocas
+                    pozitie = post.Mijlocas;
+                    break;
+
+                case "Atacant": // atacant
+                    pozitie = post.Atacant;
+                    break;
+
+                default:
+                break;
+            }
+
+            return pozitie;
+        }
+
+}
 }

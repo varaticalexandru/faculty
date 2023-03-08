@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<ArrayOfDate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Date>
+    <ID>1</ID>
+    <Nume>Caldare</Nume>
+    <Prenume>Sanya</Prenume>
+  </Date>
+  <Date>
+    <ID>2</ID>
+    <Nume>Var</Nume>
+    <Prenume>Vanya</Prenume>
+  </Date>
+  <Date>
+    <ID>3</ID>
+    <Nume>Dar</Nume>
+    <Prenume>Ion</Prenume>
+  </Date>
+</ArrayOfDate>

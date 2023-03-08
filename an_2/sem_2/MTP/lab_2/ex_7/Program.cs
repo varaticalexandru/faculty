@@ -16,7 +16,8 @@ namespace ex_7
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LPF());
+            LPF LPFForm = new LPF();
+            Application.Run(LPFForm);
         }
     }
 }

@@ -1,0 +1,22 @@
+<students>
+  <student an="3" varsta="21">
+    <nume>Sasha</nume>
+    <spec>Info</spec>
+  </student>
+  <student an="1" varsta="20">
+    <nume>Vanya</nume>
+    <spec>Fizica</spec>
+  </student>
+  <student an="3" varsta="22">
+    <nume>Alex</nume>
+    <spec>Istorie</spec>
+  </student>
+  <student an="4" varsta="24">
+    <nume>Marin</nume>
+    <spec>Arhitectura</spec>
+  </student>
+  <student an="2" varsta="20">
+    <nume>Ioana</nume>
+    <spec>Drept</spec>
+  </student>
+</students>

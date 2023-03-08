@@ -30,7 +30,7 @@
         {
             this.echipaLabel = new System.Windows.Forms.Label();
             this.echipeComboBox = new System.Windows.Forms.ComboBox();
-            this.adaugaEchipaButton = new System.Windows.Forms.Button();
+            this.echipaNouaButton = new System.Windows.Forms.Button();
             this.detaliiJucatorGroupBox = new System.Windows.Forms.GroupBox();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.varstaTextBox = new System.Windows.Forms.TextBox();
@@ -42,7 +42,7 @@
             this.CNPLabel = new System.Windows.Forms.Label();
             this.postLabel = new System.Windows.Forms.Label();
             this.numeLabel = new System.Windows.Forms.Label();
-            this.adaugaJucatorbutton = new System.Windows.Forms.Button();
+            this.jucatorNouButton = new System.Windows.Forms.Button();
             this.jucatoriFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.detaliiJucatorGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -66,16 +66,18 @@
             this.echipeComboBox.Size = new System.Drawing.Size(190, 24);
             this.echipeComboBox.TabIndex = 1;
             this.echipeComboBox.SelectedIndexChanged += new System.EventHandler(this.echipeComboBox_SelectedIndexChanged);
+            this.echipeComboBox.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.echipeComboBox_ControlAdded);
             // 
-            // adaugaEchipaButton
+            // echipaNouaButton
             // 
-            this.adaugaEchipaButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adaugaEchipaButton.Location = new System.Drawing.Point(317, 30);
-            this.adaugaEchipaButton.Name = "adaugaEchipaButton";
-            this.adaugaEchipaButton.Size = new System.Drawing.Size(117, 26);
-            this.adaugaEchipaButton.TabIndex = 2;
-            this.adaugaEchipaButton.Text = "Echipa noua";
-            this.adaugaEchipaButton.UseVisualStyleBackColor = true;
+            this.echipaNouaButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.echipaNouaButton.Location = new System.Drawing.Point(317, 30);
+            this.echipaNouaButton.Name = "echipaNouaButton";
+            this.echipaNouaButton.Size = new System.Drawing.Size(117, 26);
+            this.echipaNouaButton.TabIndex = 2;
+            this.echipaNouaButton.Text = "Echipa noua";
+            this.echipaNouaButton.UseVisualStyleBackColor = true;
+            this.echipaNouaButton.Click += new System.EventHandler(this.echipaNouaButton_Click);
             // 
             // detaliiJucatorGroupBox
             // 
@@ -99,37 +101,42 @@
             // dateTimePicker
             // 
             this.dateTimePicker.Enabled = false;
+            this.dateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker.Location = new System.Drawing.Point(150, 172);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(195, 20);
+            this.dateTimePicker.Size = new System.Drawing.Size(195, 23);
             this.dateTimePicker.TabIndex = 16;
             // 
             // varstaTextBox
             // 
+            this.varstaTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.varstaTextBox.Location = new System.Drawing.Point(150, 208);
             this.varstaTextBox.Name = "varstaTextBox";
-            this.varstaTextBox.Size = new System.Drawing.Size(195, 20);
+            this.varstaTextBox.Size = new System.Drawing.Size(195, 23);
             this.varstaTextBox.TabIndex = 15;
             // 
             // CNPTextBox
             // 
+            this.CNPTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CNPTextBox.Location = new System.Drawing.Point(150, 138);
             this.CNPTextBox.Name = "CNPTextBox";
-            this.CNPTextBox.Size = new System.Drawing.Size(195, 20);
+            this.CNPTextBox.Size = new System.Drawing.Size(195, 23);
             this.CNPTextBox.TabIndex = 13;
             // 
             // postTextBox
             // 
+            this.postTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.postTextBox.Location = new System.Drawing.Point(150, 101);
             this.postTextBox.Name = "postTextBox";
-            this.postTextBox.Size = new System.Drawing.Size(195, 20);
+            this.postTextBox.Size = new System.Drawing.Size(195, 23);
             this.postTextBox.TabIndex = 12;
             // 
             // numeTextBox
             // 
+            this.numeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numeTextBox.Location = new System.Drawing.Point(150, 68);
             this.numeTextBox.Name = "numeTextBox";
-            this.numeTextBox.Size = new System.Drawing.Size(195, 20);
+            this.numeTextBox.Size = new System.Drawing.Size(195, 23);
             this.numeTextBox.TabIndex = 11;
             // 
             // varstaLabel
@@ -182,15 +189,16 @@
             this.numeLabel.TabIndex = 6;
             this.numeLabel.Text = "Nume";
             // 
-            // adaugaJucatorbutton
+            // jucatorNouButton
             // 
-            this.adaugaJucatorbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adaugaJucatorbutton.Location = new System.Drawing.Point(149, 349);
-            this.adaugaJucatorbutton.Name = "adaugaJucatorbutton";
-            this.adaugaJucatorbutton.Size = new System.Drawing.Size(117, 26);
-            this.adaugaJucatorbutton.TabIndex = 5;
-            this.adaugaJucatorbutton.Text = "Jucator nou";
-            this.adaugaJucatorbutton.UseVisualStyleBackColor = true;
+            this.jucatorNouButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.jucatorNouButton.Location = new System.Drawing.Point(149, 349);
+            this.jucatorNouButton.Name = "jucatorNouButton";
+            this.jucatorNouButton.Size = new System.Drawing.Size(117, 26);
+            this.jucatorNouButton.TabIndex = 5;
+            this.jucatorNouButton.Text = "Jucator nou";
+            this.jucatorNouButton.UseVisualStyleBackColor = true;
+            this.jucatorNouButton.Click += new System.EventHandler(this.jucatorNouButton_Click);
             // 
             // jucatoriFlowLayoutPanel
             // 
@@ -201,20 +209,24 @@
             this.jucatoriFlowLayoutPanel.Size = new System.Drawing.Size(232, 245);
             this.jucatoriFlowLayoutPanel.TabIndex = 3;
             this.jucatoriFlowLayoutPanel.WrapContents = false;
+            this.jucatoriFlowLayoutPanel.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.jucatoriFlowLayoutPanel_ControlAdded);
             // 
             // LPF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 402);
-            this.Controls.Add(this.adaugaJucatorbutton);
+            this.Controls.Add(this.jucatorNouButton);
             this.Controls.Add(this.detaliiJucatorGroupBox);
             this.Controls.Add(this.jucatoriFlowLayoutPanel);
-            this.Controls.Add(this.adaugaEchipaButton);
+            this.Controls.Add(this.echipaNouaButton);
             this.Controls.Add(this.echipeComboBox);
             this.Controls.Add(this.echipaLabel);
             this.Name = "LPF";
             this.Text = "LPF";
+            this.Click += new System.EventHandler(this.LPF_Click);
+            this.MouseCaptureChanged += new System.EventHandler(this.LPF_MouseCaptureChanged);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LPF_MouseMove);
             this.detaliiJucatorGroupBox.ResumeLayout(false);
             this.detaliiJucatorGroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -226,7 +238,7 @@
 
         private System.Windows.Forms.Label echipaLabel;
         private System.Windows.Forms.ComboBox echipeComboBox;
-        private System.Windows.Forms.Button adaugaEchipaButton;
+        private System.Windows.Forms.Button echipaNouaButton;
         private System.Windows.Forms.GroupBox detaliiJucatorGroupBox;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.TextBox varstaTextBox;
@@ -238,7 +250,7 @@
         private System.Windows.Forms.Label CNPLabel;
         private System.Windows.Forms.Label postLabel;
         private System.Windows.Forms.Label numeLabel;
-        private System.Windows.Forms.Button adaugaJucatorbutton;
+        private System.Windows.Forms.Button jucatorNouButton;
         private System.Windows.Forms.FlowLayoutPanel jucatoriFlowLayoutPanel;
     }
 }

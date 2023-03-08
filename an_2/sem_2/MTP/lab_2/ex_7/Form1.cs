@@ -17,6 +17,11 @@ namespace ex_7
         // incarca echipele in ComboBox
         private void loadEchipe()
         {
+
+            // clear
+            echipeComboBox.Items.Clear();
+
+
             // iteram prin toate dir-urile din cwd/pwd
             foreach (string dirPath in Directory.EnumerateDirectories(Application.StartupPath))
             {
@@ -29,6 +34,10 @@ namespace ex_7
         // incarca jucatorii din echipa selectata in FlowLayoutPanel
         private void loadJucatori(string echipa)
         {
+            // clear
+            jucatoriFlowLayoutPanel.Controls.Clear();
+
+
             string path = Application.StartupPath + "\\" + echipa;
 
             // iteram prin fiecare file .lpf din path
@@ -38,10 +47,12 @@ namespace ex_7
                 {
                     string cnp = Path.GetFileNameWithoutExtension(filename);
                     string nume = sr.ReadLine();
-                    string post = sr.ReadLine();
+                    string pozitie_string = sr.ReadLine();
+
+                    Jucator.post pozitie = Jucator.stringToPost(pozitie_string);
 
                     // instantiere clasa Jucator
-                    Jucator jucator = new Jucator(nume, cnp, post);
+                    Jucator jucator = new Jucator(nume, cnp, pozitie);
 
                     // creeare buton cu numele jucatorului
                     Button btn = new Button();
@@ -73,7 +84,7 @@ namespace ex_7
 
             // scriere date in textbox-uri
             numeTextBox.Text = jucator.Nume;
-            postTextBox.Text = jucator.Post;
+            postTextBox.Text = jucator.Pozitie.ToString();
             CNPTextBox.Text = jucator.Cnp;
 
 
@@ -121,6 +132,45 @@ namespace ex_7
 
             loadJucatori(echipeComboBox.Text);
 
+        }
+
+        private void jucatorNouButton_Click(object sender, EventArgs e)
+        {
+            JucatorNou JucatorNouForm = new JucatorNou();
+            JucatorNouForm.ShowDialog(ref echipeComboBox, ref jucatoriFlowLayoutPanel);  // apelare ShowDialog overloaded
+
+        }
+
+        private void echipaNouaButton_Click(object sender, EventArgs e)
+        {
+            EchipaNoua EchipaNouaForm = new EchipaNoua();
+            EchipaNouaForm.ShowDialog();
+        }
+
+        private void echipeComboBox_ControlAdded(object sender, ControlEventArgs e)
+        {
+
+        }
+
+        private void jucatoriFlowLayoutPanel_ControlAdded(object sender, ControlEventArgs e)
+        {
+
+        }
+
+        private void LPF_MouseCaptureChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LPF_MouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void LPF_Click(object sender, EventArgs e)
+        {
+            loadEchipe();
+            loadJucatori(echipeComboBox.Text);
         }
     }
 }

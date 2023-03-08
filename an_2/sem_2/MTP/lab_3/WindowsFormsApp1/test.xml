@@ -1,0 +1,20 @@
+<students>
+    <student>Nume_student_1</student>
+    <student>Nume_student_2</student>
+    <student>Nume_student_3</student>
+
+</students
+
+
+<students>
+    <student an="3", varsta="22">
+        <nume>Sasha</nume>
+        <specialitate>Info</Info>
+    </student>
+
+   <student an="2", varsta="21">
+        <nume>Ian</nume>
+        <specialitate>Drept</Info>
+    </student>
+
+</students>
