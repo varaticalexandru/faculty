@@ -29,21 +29,8 @@ public class Vers {
 
     // numarul de vocale din vers
     public int getVowelsNum() {
-        int k = 0;  // contor vocale
-
-        // iteram prin fiecare caracter din vers
-        for (int i = 0; i < line.length(); i++) {
-            // daca caracterul de pe pozitia i este vocala (minuscula/majuscula)
-            if (line.charAt(i)=='a' || line.charAt(i)=='e' ||line.charAt(i)=='i' ||line.charAt(i)=='o' ||line.charAt(i)=='u' || line.charAt(i)=='y'
-                || line.charAt(i)=='A' || line.charAt(i)=='E' || line.charAt(i)=='I' || line.charAt(i)=='O' || line.charAt(i)=='U' || line.charAt(i)=='Y') {
-                // incrementam contorul
-                k++;
-            }
-        }
-
-        return k;
+        return (int) line.chars().filter(ch -> ch=='e'||ch=='E'||ch=='a'||ch=='A'
+            ||ch=='i'||ch=='I'||ch=='o'||ch=='O'||ch=='u'||ch=='U'||ch=='y'||ch=='Y').count();
     }
-
-
 
 }
