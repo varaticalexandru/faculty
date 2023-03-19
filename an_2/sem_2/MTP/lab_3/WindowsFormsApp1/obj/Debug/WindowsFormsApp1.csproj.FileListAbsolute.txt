@@ -11,3 +11,4 @@ D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_3\WindowsFormsApp1\obj\Debug\WindowsFor
 D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_3\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_3\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
 D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_3\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form3.resources
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_3\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form4.resources

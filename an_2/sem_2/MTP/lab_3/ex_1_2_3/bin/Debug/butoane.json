@@ -1,0 +1,52 @@
+[
+  {
+    "Nume": "button9",
+    "Culoare": "ff2a9b92",
+    "NClicks": "0"
+  },
+  {
+    "Nume": "button8",
+    "Culoare": "White",
+    "NClicks": "2"
+  },
+  {
+    "Nume": "button7",
+    "Culoare": "ffc3326f",
+    "NClicks": "0"
+  },
+  {
+    "Nume": "button6",
+    "Culoare": "ff72b527",
+    "NClicks": "0"
+  },
+  {
+    "Nume": "button5",
+    "Culoare": "ffa29ee7",
+    "NClicks": "0"
+  },
+  {
+    "Nume": "button4",
+    "Culoare": "ff52f471",
+    "NClicks": "0"
+  },
+  {
+    "Nume": "button3",
+    "Culoare": "ffdc0aa9",
+    "NClicks": "0"
+  },
+  {
+    "Nume": "button2",
+    "Culoare": "White",
+    "NClicks": "1"
+  },
+  {
+    "Nume": "button1",
+    "Culoare": "Aqua",
+    "NClicks": "1"
+  },
+  {
+    "Nume": "button0",
+    "Culoare": "ffa4a4a4",
+    "NClicks": "1"
+  }
+]

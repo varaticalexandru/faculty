@@ -54,7 +54,7 @@ public class Parabola {
         return new Punct((float)-b/(2*a), (float) (-(b*b)+(4*a*c))/(4*a));
     }
 
-    public Punct getMijlocDistanta(Parabola p) {
+    public Punct getMijloc(Parabola p) {
         // punctul de la mijlocul segmentului de dreapta ce uneste varfurile parabolelor
 
         Punct varf = p.getVarf();
@@ -62,7 +62,7 @@ public class Parabola {
         return new Punct((getVarf().getX()+varf.getX())/2, (getVarf().getY()+varf.getY())/2);
     }
 
-    public static Punct getMijlocDistanta(Parabola p1, Parabola p2) {
+    public static Punct getMijloc(Parabola p1, Parabola p2) {
         // punctul de la mijlocul segmentului de dreapta ce uneste varfurile parabolelor
 
         Punct varf_1 = p1.getVarf();
