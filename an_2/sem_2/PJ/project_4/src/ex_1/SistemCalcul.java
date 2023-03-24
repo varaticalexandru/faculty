@@ -22,8 +22,8 @@ public class SistemCalcul extends EchipamentElectronic {
      * @param capacit_hdd Capacitatea HDD-ului
      * @param sistem_operare Sistemul de operare (WINDOWS / LINUX)
      */
-    public SistemCalcul(String nume, String nr_inventar, Float pret, ZonaMagazie zona_magazie, Situatie situatie, String tip_monitor, Float viteza_proc, Integer capacit_hdd, SistemOperare sistem_operare) {
-        super(nume, nr_inventar, pret, zona_magazie, situatie);
+    public SistemCalcul(String nume, String nr_inventar, Float pret, ZonaMagazie zona_magazie, Situatie situatie, String tip, String tip_monitor, Float viteza_proc, Integer capacit_hdd, SistemOperare sistem_operare) {
+        super(nume, nr_inventar, pret, zona_magazie, situatie, tip);
         this.tip_monitor = tip_monitor;
         this.viteza_proc = viteza_proc;
         this.capacit_hdd = capacit_hdd;

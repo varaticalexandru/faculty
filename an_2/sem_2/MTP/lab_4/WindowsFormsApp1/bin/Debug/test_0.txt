@@ -1,0 +1,42 @@
+0
+single
+Care este valoarea lui Pi ?
+4
+2.71
+3.14
+2.41
+doras
+.\pi.png
+1
+
+1
+single
+Care este inaltimea muntelui Everest ?
+3
+8.848 m
+8.488 m
+8.484 m
+.\everest.png
+0
+
+2
+multiple
+Care din urmatoarele sunt distro-uri de Linux?
+5
+Solaris
+Windows
+Debian
+CentOS
+Ubuntu
+0
+0, 2, 3, 4
+
+3
+multiple
+Care fructe sunt rosii?
+3
+Mere
+Banane
+Capsune
+0
+0, 2

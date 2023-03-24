@@ -10,3 +10,10 @@ D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_4\WindowsFormsApp1\obj\Debug\WindowsFor
 D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form3.resources
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_4\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.dll
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_4\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.pdb
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_4\WindowsFormsApp1\bin\Debug\HtmlAgilityPack.xml
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form4.resources
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
+D:\UPT_AC\GIT\faculty\an_2\sem_2\MTP\lab_4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form5.resources

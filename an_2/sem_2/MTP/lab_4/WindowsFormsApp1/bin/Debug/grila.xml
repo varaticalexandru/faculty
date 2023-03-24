@@ -1,0 +1,62 @@
+<TestGrila>
+
+	<Intrebare>
+		<Idx>0</Idx>
+		<Tip>single</Tip>
+		<Text>Care este valoarea lui Pi ?</Text>
+		<Nr_var_rs>4</Nr_var_rs>
+		<Var_rs>
+			<Varianta>2.71</Varianta>
+			<Varianta>3.14</Varianta>
+			<Varianta>2.41</Varianta>
+			<Varianta>doras</Varianta>
+		</Var_rs>
+		<Link_poza>.\cavcaliuc.png</Link_poza>
+		<Rs_corect>1</Rs_corect>
+	</Intrebare>
+
+	<Intrebare>
+		<Idx>1</Idx>
+		<Tip>single</Tip>
+		<Text>Care este inaltimea muntelui Everest ?</Text>
+		<Nr_var_rs>3</Nr_var_rs>
+		<Var_rs>
+			<Varianta>8.848 m</Varianta>
+			<Varianta>8.488 m</Varianta>
+			<Varianta>8.484 m</Varianta>
+		</Var_rs>
+		<Link_poza>.\Vasile-Bolea.jpg</Link_poza>
+		<Rs_corect>0</Rs_corect>
+	</Intrebare>
+
+	<Intrebare>
+		<Idx>2</Idx>
+		<Tip>multiple</Tip>
+		<Text>Care din urmatoarele sunt distro-uri de Linux?</Text>
+		<Nr_var_rs>5</Nr_var_rs>
+		<Var_rs>
+			<Varianta>Solaris</Varianta>
+			<Varianta>Windows</Varianta>
+			<Varianta>Debian</Varianta>
+			<Varianta>CentOS</Varianta>
+			<Varianta>Ubuntu</Varianta>
+		</Var_rs>
+		<Link_poza>0</Link_poza>
+		<Rs_corect>0, 2, 3, 4</Rs_corect>
+	</Intrebare>
+
+	<Intrebare>
+		<Idx>3</Idx>
+		<Tip>multiple</Tip>
+		<Text>Care fructe sunt rosii?</Text>
+		<Nr_var_rs>3</Nr_var_rs>
+		<Var_rs>
+			<Varianta>Mere</Varianta>
+			<Varianta>Banane</Varianta>
+			<Varianta>Capsune</Varianta>
+		</Var_rs>
+		<Link_poza>0</Link_poza>
+		<Rs_corect>0, 2</Rs_corect>
+	</Intrebare>
+
+</TestGrila>

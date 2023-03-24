@@ -21,8 +21,8 @@ public class Copiator extends EchipamentElectronic {
      * @param p_ton Nr. pagini / toner
      * @param format_copiere Format de copiere (A3 / A4)
      */
-    public Copiator(String nume, String nr_inventar, Float pret, ZonaMagazie zona_magazie, Situatie situatie, Integer p_ton, FormatCopiere format_copiere) {
-        super(nume, nr_inventar, pret, zona_magazie, situatie);
+    public Copiator(String nume, String nr_inventar, Float pret, ZonaMagazie zona_magazie, Situatie situatie, String tip, Integer p_ton, FormatCopiere format_copiere) {
+        super(nume, nr_inventar, pret, zona_magazie, situatie, tip);
         this.p_ton = p_ton;
         this.format_copiere = format_copiere;
     }

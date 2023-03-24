@@ -57,10 +57,17 @@ namespace WindowsFormsApp1
 
         private void incepeTestulButton_Click(object sender, EventArgs e)
         {
-            string nume = numeTextBox.Text.Trim();
-            string test = testeComboBox.Text.Trim();
 
-            Form1 form1= new Form1(nume, test);
+            if (String.IsNullOrWhiteSpace(numeTextBox.Text) || String.IsNullOrWhiteSpace(testeComboBox.Text) || !isValid(CNPTextBox.Text))
+            {
+                MessageBox.Show("Date invalide !", "Eroare", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string nume = numeTextBox.Text.Trim();
+            string filename = testeComboBox.Text.Trim();
+
+            Form1 form1= new Form1(nume, filename);
             form1.ShowDialog();
         }
     }

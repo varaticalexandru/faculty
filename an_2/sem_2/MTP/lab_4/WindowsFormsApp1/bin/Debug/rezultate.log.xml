@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfRezultat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Rezultat>
+    <Text>Care este valoarea lui Pi ?</Text>
+    <Rs_user>1 </Rs_user>
+    <Rs_corecte>1</Rs_corecte>
+  </Rezultat>
+  <Rezultat>
+    <Text>Care este inaltimea muntelui Everest ?</Text>
+    <Rs_user>2 </Rs_user>
+    <Rs_corecte>0</Rs_corecte>
+  </Rezultat>
+  <Rezultat>
+    <Text>Care din urmatoarele sunt distro-uri de Linux?</Text>
+    <Rs_user>2 3 4 </Rs_user>
+    <Rs_corecte>0, 2, 3, 4</Rs_corecte>
+  </Rezultat>
+  <Rezultat>
+    <Text>Care fructe sunt rosii?</Text>
+    <Rs_user>1 2 </Rs_user>
+    <Rs_corecte>0, 2</Rs_corecte>
+  </Rezultat>
+</ArrayOfRezultat>

@@ -3,42 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace WindowsFormsApp1
 {
-    internal class Intrebare
+    [XmlType("Intrebare")]
+    public class Intrebare
     {
-        // membri
-        int idx;
-        string tip;
-        string text;
-        int nr_var_rs;
-        string[] var_rs;
-        string linkPoza;
-        string rs_corect;
-
-        // contructori
-        public Intrebare(int idx, string tip, string text, int nr_var_rs, string[] var_rs, string linkPoza, string rs_corect)
-        {
-            this.idx = idx;
-            this.tip = tip;
-            this.text = text;
-            this.nr_var_rs = nr_var_rs;
-            this.var_rs = var_rs;
-            this.linkPoza = linkPoza;
-            this.rs_corect = rs_corect;
-        }
-
+        
         public Intrebare() { }
 
         // proprietati
 
-        public int Idx { get => idx; set => idx = value; }
-        public string Tip { get => tip; set => tip = value; }
-        public string Text { get => text; set => text = value; }
-        public int Nr_var_rs { get => nr_var_rs; set => nr_var_rs = value; }
-        public string[] Var_rs { get => var_rs; set => var_rs = value; }
-        public string LinkPoza { get => linkPoza; set => linkPoza = value; }
-        public string Rs_corect { get => rs_corect; set => rs_corect = value; }
+        [XmlElement("Idx")]
+        public int Idx { get; set; }
+
+        [XmlElement("Tip")]
+        public string Tip { get ; set; }
+
+        [XmlElement("Text")]
+        public string Text { get; set; }
+
+        [XmlElement("Nr_var_rs")]
+        public int Nr_var_rs { get; set; }
+
+        [XmlArrayItem("Varianta", Type = typeof(String))]
+        [XmlArray]
+        public List<string> Var_rs { get; set; }
+
+        [XmlElement("Link_poza")]
+        public string Link_poza { get; set; }
+
+        [XmlElement("Rs_corect")]
+        public string Rs_corect { get; set; }
     }
 }

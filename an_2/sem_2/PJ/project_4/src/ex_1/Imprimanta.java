@@ -25,8 +25,8 @@ public class Imprimanta extends EchipamentElectronic {
      * @param p_car Numarul de pagini / cartus
      * @param mod_tiparire / Modul de tiparire (COLOR, ALB_NEGRU)
      */
-    public Imprimanta(String nume, String nr_inventar, Float pret, ZonaMagazie zona_magazie, Situatie situatie, Integer ppm, String rezolutie, Integer p_car, ModTiparire mod_tiparire) {
-        super(nume, nr_inventar, pret, zona_magazie, situatie);
+    public Imprimanta(String nume, String nr_inventar, Float pret, ZonaMagazie zona_magazie, Situatie situatie, String tip, Integer ppm, String rezolutie, Integer p_car, ModTiparire mod_tiparire) {
+        super(nume, nr_inventar, pret, zona_magazie, situatie, tip);
         this.ppm = ppm;
         this.rezolutie = rezolutie;
         this.p_car = p_car;
@@ -74,7 +74,7 @@ public class Imprimanta extends EchipamentElectronic {
             super.toString() +
             "Pagini per minut: " + this.ppm + "\n" +
             "Puncte per inch: " + this.rezolutie + "\n" +
-            "Pagini per cartus" + this.p_car + "\n" +
+            "Pagini per cartus: " + this.p_car + "\n" +
             "Mod tiparire: " + this.mod_tiparire.toString() + "\n" +
             "\n"
         ;

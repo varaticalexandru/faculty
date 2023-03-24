@@ -14,6 +14,7 @@ public class EchipamentElectronic {
     Float pret;
     ZonaMagazie zona_magazie;
     Situatie situatie;
+    String tip;
 
     // constructori
 
@@ -24,14 +25,16 @@ public class EchipamentElectronic {
      * @param pret Pretul
      * @param zona_magazie Zona din magazin unde este dispus
      * @param situatie Situatia echipamentului (ACHIZITIONAT / EXPUS / VANDUT)
+     * @param tip Tipul echipamentului (Imrpimanta / Copiator / Sistem de calcul)
      */
 
-    public EchipamentElectronic(String nume, String nr_inventar, Float pret, ZonaMagazie zona_magazie, Situatie situatie) {
+    public EchipamentElectronic(String nume, String nr_inventar, Float pret, ZonaMagazie zona_magazie, Situatie situatie, String tip) {
         this.nume = nume;
         this.nr_inventar = nr_inventar;
         this.pret = pret;
         this.zona_magazie = zona_magazie;
         this.situatie = situatie;
+        this.tip = tip;
     }
 
     // getters & setters
@@ -76,6 +79,14 @@ public class EchipamentElectronic {
         this.situatie = situatie;
     }
 
+    public String getTip() {
+        return tip;
+    }
+
+    public void setTip(String tip) {
+        this.tip = tip;
+    }
+
     // metode
 
     @Override
@@ -84,7 +95,7 @@ public class EchipamentElectronic {
             "\n\n" +
             "Nume: " + this.nume + "\n" +
             "Nr. inventar: " + this.nr_inventar + "\n" +
-            "Pret" + String.format("%.2f", this.pret) + "\n" +
+            "Pret: " + String.format("%.2f", this.pret) + "\n" +
             "Zona magazin: " + this.zona_magazie.toString() + "\n" +
             "Situatie: " + this.situatie.toString() + "\n"
         ;
