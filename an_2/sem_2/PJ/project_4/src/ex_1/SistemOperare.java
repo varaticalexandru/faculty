@@ -1,6 +1,11 @@
 package ex_1;
 
-enum SistemOperare {
+import java.io.Serializable;
+
+/**
+ * Enumerare tipuri Sisteme de Operare
+ */
+enum SistemOperare implements Serializable {
     WINDOWS,
     LINUX
 }

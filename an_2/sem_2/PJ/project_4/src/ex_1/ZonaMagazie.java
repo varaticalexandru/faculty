@@ -1,6 +1,12 @@
 package ex_1;
 
-enum ZonaMagazie {
+import java.io.Serializable;
+
+
+/**
+ * Enumerare Zone Magazie
+ */
+enum ZonaMagazie implements Serializable {
     A,
     B,
     C

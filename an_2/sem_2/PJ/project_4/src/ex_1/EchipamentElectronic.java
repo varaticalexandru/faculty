@@ -1,12 +1,14 @@
 package ex_1;
 
+import java.io.Serializable;
+
 /**
  * Echipamentul Electronic este produsul comercializat de firma.
  * @author Admin
  * @version 1
  * @since 2023
  */
-public class EchipamentElectronic {
+public class EchipamentElectronic implements Serializable {
 
     // membri
     String nume;

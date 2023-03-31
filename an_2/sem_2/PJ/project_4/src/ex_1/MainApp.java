@@ -2,18 +2,26 @@ package ex_1;
 
 import com.sun.tools.javac.Main;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.sql.Array;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
+/**
+ * Clasa principala aplicatie
+ */
 public class MainApp {
 
-    // citeste echipamentele
-    public static List<EchipamentElectronic> getEchipamente(String file_in) throws IOException {
+    /**
+     * Citeste echipamentele din fisier
+     * @param file_in Numele fisierului de intrare
+     * @return Lista de obiecte citita din fisier
+     */
+    public static List<EchipamentElectronic> getEchipamente(String file_in) throws IOException
+    {
 
         List<EchipamentElectronic> echipamente = new ArrayList<EchipamentElectronic>();
         BufferedReader br = new BufferedReader(new FileReader(file_in));
@@ -73,8 +81,12 @@ public class MainApp {
         return echipamente;
     }
 
-    // menu
-    public static void menu() {
+
+    /**
+     * Afiseaza meniul interactiv
+     */
+    public static void menu()
+    {
         System.out.println(
             """
                 ------------ Meniu Interactiv ------------
@@ -83,19 +95,23 @@ public class MainApp {
                 2. Afisarea imprimantelor
                 3. Afisarea copiatoarelor
                 4. Afisarea sistemelor de calcul
-                5. Modificarea starii in care se afla un echipament
+                5. Modificarea situatiei in care se afla un echipament
                 6. Setarea unui anumit mod de scriere pentru o imprimantă
                 7. Setarea unui format de copiere pentru copiatoare
                 8. Instalarea unui anumit sistem de operare pe un sistem de calcul
                 9. Afisarea echipamentelor vandute
-                10. Serializarea colectiei de obiecte in fisierul echip.bin
-                11. Deserializarea colectiei de obiecte in fisierul echip.bin
+                10. Serializarea colectiei de obiecte in fisier .bin
+                11. Deserializarea colectiei de obiecte din fisier .bin
                 --------------------------------------------
                 Optiunea dvs:""" + " "
         );
     }
 
-    // afiseaza toate echipamentele
+
+    /**
+     * Afiseaza toate echipamentele
+     * @param echipamente Lista de echipamente
+     */
     public static void afisareEchipamente(List<EchipamentElectronic> echipamente)
     {
         System.out.println("Toate echipamentele:");
@@ -106,7 +122,12 @@ public class MainApp {
 
     }
 
-    // afiseaza toate echipamentele de un anumit tip
+
+    /**
+     * Afiseaza toate echipamentele de un anumit tip
+     * @param echipamente Lista de echipamente
+     * @param tip Tipul de echipamente
+     */
     public static void afisareEchipamenteTip(List<EchipamentElectronic> echipamente, String tip)
     {
         System.out.println("Echipamtele de tip " + tip + ":");
@@ -119,7 +140,151 @@ public class MainApp {
     }
 
 
+    /**
+     * Modificare valoare parametru echipament
+     * @param echipamente Lista de echipamente
+     * @param nr_inventar Numarul de inventar al echipamentului
+     * @param parametru Numele parametrului
+     * @param valoare Valoarea parametrului
+     */
+    public static void modificareParametruEchipament(List<EchipamentElectronic> echipamente, String nr_inventar, String parametru, String valoare)
+    {
+        int found = 0;
 
+        switch (parametru) {
+            case "situatie":   // 5
+            {
+                for (EchipamentElectronic e: echipamente
+                     ) {
+                    if (e.getNr_inventar().equals(nr_inventar)) {
+                        found = 1;
+                        e.setSituatie(Situatie.valueOf(valoare.toUpperCase()));   // set situatie
+                        System.out.println("Stare modificata !");
+                    }
+                }
+
+                break;
+            }
+
+            case "mod_tiparire":    // 6
+            {
+                for (EchipamentElectronic e: echipamente
+                     ) {
+                    if (e instanceof Imprimanta && e.getNr_inventar().compareTo(nr_inventar) == 0) {
+                        found = 1;
+                        ((Imprimanta) e).setMod_tiparire(ModTiparire.valueOf(valoare.toUpperCase()));     // set mod_tiparire
+                        System.out.println("Mod Tiparire modificat !");
+                    }
+                }
+
+                break;
+            }
+
+            case "format_copiere":    // 7
+            {
+                for (EchipamentElectronic e: echipamente
+                     ) {
+                    if (e instanceof Copiator && e.getNr_inventar().compareTo(nr_inventar) == 0) {
+                        found = 1;
+                        ((Copiator) e).setFormat_copiere(FormatCopiere.valueOf(valoare.toUpperCase()));   // set format_copiere
+                        System.out.println("Format Copiere modificat !");
+                    }
+                }
+
+                break;
+            }
+
+            case "sistem_operare":    // 8
+            {
+                for (EchipamentElectronic e: echipamente
+                     ) {
+                    if (e instanceof SistemCalcul && e.getNr_inventar().compareTo(nr_inventar) == 0) {
+                        found = 1;
+                        ((SistemCalcul) e).setSistem_operare(SistemOperare.valueOf(valoare.toUpperCase()));     // set sistem_operare
+                        System.out.println("Sistem Operare modificat !");
+                    }
+                }
+            }
+
+            break;
+        }
+
+
+        if (found == 0)
+            System.out.println("Echipament inexistent, numar inventar invalid !");
+    }
+
+    /**
+     * Afisarea echipamentelor vandute
+     * @param echipamente Lista de echipamente
+     */
+    public static void afisareEchipamenteVandute(List<EchipamentElectronic> echipamente)
+    {
+
+        System.out.println("\nEchipamente vandute: ");
+        for (EchipamentElectronic e: echipamente
+             ) {
+            if (e.getSituatie() == Situatie.VANDUT)
+                System.out.println(e);
+        }
+    }
+
+
+    /**
+     * Serializare lista de echipamente in fisier .bin
+     * @param echipamente Lista de echipamente
+     * @param filename Numele fisierului
+     */
+    public static void serializeBin(List<EchipamentElectronic> echipamente, String filename) throws IOException
+    {
+
+        try {
+            FileOutputStream f = new FileOutputStream(filename);
+            ObjectOutputStream oos = new ObjectOutputStream(f);
+
+            oos.writeObject(echipamente);   // serializare
+            oos.close();
+            f.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    /**
+     * Deserializare lista de echipamente din fisier .bin
+     * @param filename Numele fisierului
+     * @return Lista de echipamente
+     */
+    public static List<EchipamentElectronic> deserializeBin(String filename) throws IOException
+    {
+
+        List<EchipamentElectronic> echipamente = new ArrayList<EchipamentElectronic>();
+
+        try {
+            FileInputStream f = new FileInputStream(filename);
+            ObjectInputStream ois = new ObjectInputStream(f);
+
+            echipamente = (List<EchipamentElectronic>) ois.readObject();     // deserializare
+
+            f.close();
+            ois.close();
+
+        }
+        catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return echipamente;
+    }
+
+
+    /**
+     * Functia main
+     * @param args Argumente din linia de comanda
+     */
     public static void main(String[] args) throws IOException {
 
         String in_file = "src\\ex_1\\echipamente.txt";
@@ -129,7 +294,7 @@ public class MainApp {
         List<EchipamentElectronic> echipamente = new ArrayList<EchipamentElectronic>();
         echipamente = getEchipamente(in_file);
 
-        Integer opt = 0;
+        int opt = 0;
 
         do {
             menu();
@@ -172,13 +337,61 @@ public class MainApp {
                     break;
                 }
 
-                case 5:     // modificarea starii in care se afla un echipament
+                case 5:     // modificarea situatiei in care se afla un echipament
                 {
 
+                    System.out.println("\nIntroduceti nr. de inventar si situatia dorita:\n");
+                    modificareParametruEchipament(echipamente, scanner.nextLine(), "situatie", scanner.nextLine());
+                    break;
+                }
+
+                case 6:     // setarea modului de tiparire pentru o imprimanta
+                {
+
+                    System.out.println("\nIntroduceti nr. de inventar si modul de tiparire dorit:\n");
+                    modificareParametruEchipament(echipamente, scanner.nextLine(), "mod_tiparire", scanner.nextLine());
+                    break;
+                }
+
+                case 7:     // setarea formatului de copiere pentru o imprimanta
+                {
+
+                    System.out.println("\nIntroduceti nr. de inventar si formatul de copiere dorit:\n");
+                    modificareParametruEchipament(echipamente, scanner.nextLine(), "format_copiere", scanner.nextLine());
+                    break;
+                }
+
+                case 8:     // setarea sistemului de operare pentru un sistem de calcul
+                {
+                    System.out.println("\nIntroduceti nr. de inventar si sistemul de operare dorit:\n");
+                    modificareParametruEchipament(echipamente, scanner.nextLine(), "sistem_operare", scanner.nextLine());
+                    break;
+                }
+
+                case 9:     // afisarea echipamentelor vandute
+                {
+                    afisareEchipamenteVandute(echipamente);
+
+                    break;
+                }
+
+                case 10:    //  serializarea colectiei de obiecte in fisier .bin
+                {
+                    serializeBin(echipamente, "echipamente.bin");
+
+                    break;
+                }
+
+                case 11:    //  deserializarea colectiei de obiecte din fisierul .bin
+                {
+                    echipamente = deserializeBin("echipamente.bin");
+
+                    break;
                 }
 
                 default:
                 {
+                    System.out.println("Eroare ! Optiune nedefinita !");
                     break;
                 }
             }

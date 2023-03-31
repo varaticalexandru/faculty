@@ -9,9 +9,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ex_0.Persoana;
 
+/**
+ * Clasa programului principal.
+ */
 public class MainApp {
 
-    // serializeaza JSON
+    /**
+     * Serializeaza lista de perechi intr-un fisier .json.
+     * @param perechi lista de perechi de numere de forma (a, b)
+     */
     public static void scriere(List<PerecheNumere> perechi)
     {
         try {
@@ -24,7 +30,12 @@ public class MainApp {
         }
     }
 
-    // deserializeaza JSON
+
+    /**
+     * Deserializeaza lista de perechi din fisierul .json.
+     * @param in_file numele fisierului .json de intrare.
+     * @return lista de perechi de numere de forma (a, b)
+     */
     public static List<PerecheNumere> citire(String in_file)
     {
         try {
@@ -42,6 +53,10 @@ public class MainApp {
     }
 
 
+    /**
+     * Functia principala a clasei principale MainApp.
+     * @param args lista de argumente trimise din linia de comanda
+     */
     public static void main(String[] args) {
 
         List<PerecheNumere> perechi = new ArrayList<PerecheNumere>();  // lista perechi

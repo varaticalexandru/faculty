@@ -1,12 +1,15 @@
 package ex_1;
 
+import java.io.Serializable;
+
+
 /**
  * Imprimanta este un subtip de echipament electronic.
  * @author Admin
  * @version 1
  * @since 2023
  */
-public class Imprimanta extends EchipamentElectronic {
+public class Imprimanta extends EchipamentElectronic implements Serializable {
 
     // membri
     Integer ppm;

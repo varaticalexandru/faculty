@@ -1,5 +1,11 @@
 package ex_2;
 
+/**
+ * Pereche de 2 intregi: a, b.
+ * @author Admin
+ * @version 1
+ * @since 2023
+ */
 public class PerecheNumere {
 
     // members
@@ -7,6 +13,11 @@ public class PerecheNumere {
     private int b;
 
     // comstructors
+
+    /** Constructorul clasei PerecheNumere.
+     * @param a intregul a
+     * @param b intregul b
+     */
     public PerecheNumere(int a, int b) {
         this.a = a;
         this.b = b;
@@ -38,7 +49,10 @@ public class PerecheNumere {
         return "(a: " + a + ", b:" + b + ")";
     }
 
-
+    /**
+     * Verifica daca a si b sunt numere consecutive in sirul lui Fibonacci.
+     * @return Returneaza true daca a, b - consecutive in sirul lui Fibonacci
+     */
     public Boolean isFibonacciConsecutive() {
 
         if (a < 0 || b < 0) {
@@ -57,6 +71,10 @@ public class PerecheNumere {
         return (fib1 == a && fib2 == b);
     }
 
+    /**
+     * Cel mai mic multimpul comun al numerelor a si b.
+     * @return Returneaza cel mai mic multiplu comun
+     */
     public Integer cmmmc() {
 
         int max = Math.max(a, b);
@@ -69,6 +87,10 @@ public class PerecheNumere {
         }
     }
 
+    /**
+     * Verifica daca suma cifrelor pentru a si b este aceeasi.
+     * @return Returneaza true daca a si b au suma cifrelor identice.
+     */
     public Boolean isDigitsSumSame() {
 
         int sumA = 0, sumB = 0;
@@ -85,6 +107,11 @@ public class PerecheNumere {
         return sumA == sumB;
     }
 
+    /**
+     * Numarul de cifre pare dintr-un intreg dat ca argument.
+     * @param num intregul dat ca argument
+     * @return Returneaza numarul de cifre pare.
+     */
     public static int countEvenDigits(int num) {
 
         int count = 0;
@@ -98,6 +125,11 @@ public class PerecheNumere {
         return count;
     }
 
+
+    /**
+     * Verifica daca numarul de cifre pare este acelasi pentru a si b.
+     * @return Returneaza true daca a si b au acelasi numar de cifre pare.
+     */
     public boolean isNumberOfEvenDigitsSame() {
 
         int countA = countEvenDigits(a);

@@ -1,12 +1,15 @@
 package ex_1;
 
+import java.io.Serializable;
+
+
 /**
  * Sistemul de calcul este un subtip de echipament electronic.
  * @author Admin
  * @version 1
  * @since 2023
  */
-public class SistemCalcul extends EchipamentElectronic {
+public class SistemCalcul extends EchipamentElectronic implements Serializable {
 
     // membri
     String tip_monitor;
