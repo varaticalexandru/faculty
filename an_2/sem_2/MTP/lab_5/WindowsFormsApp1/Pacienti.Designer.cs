@@ -39,6 +39,7 @@
             this.vizualizareFisaMedicalaButton = new System.Windows.Forms.Button();
             this.inchidereAplicationButton = new System.Windows.Forms.Button();
             this.vizualizarePacientiButton = new System.Windows.Forms.Button();
+            this.stergePacientButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -142,7 +143,7 @@
             // 
             this.inchidereAplicationButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.inchidereAplicationButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inchidereAplicationButton.Location = new System.Drawing.Point(586, 460);
+            this.inchidereAplicationButton.Location = new System.Drawing.Point(586, 534);
             this.inchidereAplicationButton.Name = "inchidereAplicationButton";
             this.inchidereAplicationButton.Size = new System.Drawing.Size(168, 35);
             this.inchidereAplicationButton.TabIndex = 11;
@@ -161,11 +162,23 @@
             this.vizualizarePacientiButton.UseVisualStyleBackColor = true;
             this.vizualizarePacientiButton.Click += new System.EventHandler(this.vizualizarePacientiButton_Click);
             // 
+            // stergePacientButton
+            // 
+            this.stergePacientButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stergePacientButton.Location = new System.Drawing.Point(586, 460);
+            this.stergePacientButton.Name = "stergePacientButton";
+            this.stergePacientButton.Size = new System.Drawing.Size(168, 35);
+            this.stergePacientButton.TabIndex = 13;
+            this.stergePacientButton.Text = "Sterge pacient";
+            this.stergePacientButton.UseVisualStyleBackColor = true;
+            this.stergePacientButton.Click += new System.EventHandler(this.stergePacientButton_Click);
+            // 
             // Pacienti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 523);
+            this.ClientSize = new System.Drawing.Size(800, 595);
+            this.Controls.Add(this.stergePacientButton);
             this.Controls.Add(this.vizualizarePacientiButton);
             this.Controls.Add(this.inchidereAplicationButton);
             this.Controls.Add(this.vizualizareFisaMedicalaButton);
@@ -199,5 +212,6 @@
         private System.Windows.Forms.Button vizualizareFisaMedicalaButton;
         private System.Windows.Forms.Button inchidereAplicationButton;
         private System.Windows.Forms.Button vizualizarePacientiButton;
+        private System.Windows.Forms.Button stergePacientButton;
     }
 }

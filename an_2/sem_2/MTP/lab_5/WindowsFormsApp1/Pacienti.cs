@@ -112,5 +112,10 @@ namespace WindowsFormsApp1
             Fisa fisa_form = new Fisa(cnp);
             fisa_form.ShowDialog();
         }
+
+        private void stergePacientButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

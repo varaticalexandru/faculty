@@ -83,13 +83,32 @@ namespace WindowsFormsApp1
             da.Fill(ds, "radiografii");
             table = ds.Tables["radiografii"];
 
+                // adaugarea radiografiilor in flowLayoutPanel1
+
+            DataColumn col_radiografie = table.Columns["Nume_imagine"];
+
             foreach (DataRow row in table.Rows)
+            {
+                PictureBox pictureBox = new PictureBox();
+                pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox.ImageLocation = row[col_radiografie].ToString();
+                flowLayoutPanel1.Controls.Add(pictureBox);
+                pictureBox.Show();
+
+                pictureBox.Click += PictureBox_Click;   // abonare la metoda
+            }
 
 
-
+            
 
             cnn.Close();
 
+        }
+
+        private void PictureBox_Click(object sender, EventArgs e)
+        {
+            PictureBox pictureBox = (PictureBox)sender;
+            radiografiePictureBox.Image = pictureBox.Image;
         }
 
         public Fisa(String cnp)
@@ -103,6 +122,11 @@ namespace WindowsFormsApp1
             varstaTextBox.Text = (DateTime.Now.Year - data_nasterii.Year).ToString();
 
             getPacientData(cnp);
+        }
+
+        private void okButton_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

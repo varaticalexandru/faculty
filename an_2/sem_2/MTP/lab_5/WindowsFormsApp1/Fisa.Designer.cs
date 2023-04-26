@@ -58,9 +58,9 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.radiografiiLabel = new System.Windows.Forms.Label();
             this.okButton = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.radiografiePictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radiografiePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // vizualizarePacientLabel
@@ -334,21 +334,23 @@
             this.okButton.TabIndex = 61;
             this.okButton.Text = "OK";
             this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
-            // pictureBox1
+            // radiografiePictureBox
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(541, 666);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(234, 224);
-            this.pictureBox1.TabIndex = 62;
-            this.pictureBox1.TabStop = false;
+            this.radiografiePictureBox.Location = new System.Drawing.Point(541, 666);
+            this.radiografiePictureBox.Name = "radiografiePictureBox";
+            this.radiografiePictureBox.Size = new System.Drawing.Size(234, 224);
+            this.radiografiePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.radiografiePictureBox.TabIndex = 62;
+            this.radiografiePictureBox.TabStop = false;
             // 
             // Fisa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 987);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.radiografiePictureBox);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.radiografiiLabel);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -382,7 +384,7 @@
             this.Name = "Fisa";
             this.Text = "Fisa";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radiografiePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -420,6 +422,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label radiografiiLabel;
         private System.Windows.Forms.Button okButton;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox radiografiePictureBox;
     }
 }
