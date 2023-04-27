@@ -53,13 +53,11 @@ def generate_CNP():
     
 # functie verificare CNP valid
 def is_valid(cnp):
-
-    default_cnp = "279146358279"
+    
     sum = 0
-    k = 0  # defaultCnp counter
 
     for i in range(12):
-        sum += int(cnp[i]) * int(default_cnp[i])
+        sum += int(cnp[i]) * int(CNP_ref[i])
 
     cifra_control = int(cnp[-1])
 
@@ -83,4 +81,4 @@ if __name__ == "__main__":
     if args.number >= 1:
         for i in range(0, args.number):
             print(generate_CNP())
-            # print("Valid\n" if is_valid(generate_CNP()) else "Invalid\n")
+            print("Valid\n" if is_valid(generate_CNP()) else "Invalid\n")
