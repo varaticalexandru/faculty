@@ -1,0 +1,59 @@
+[
+  [
+    "org.example.ex_2.Chitara",
+    {
+      "producator" : "Yamaha",
+      "pret" : 349.99,
+      "tip_chitara" : "CLASICA",
+      "nr_corzi" : 6
+    }
+  ],
+  [
+    "org.example.ex_2.Chitara",
+    {
+      "producator" : "Gibson",
+      "pret" : 1599.0,
+      "tip_chitara" : "ACUSTICA",
+      "nr_corzi" : 6
+    }
+  ],
+  [
+    "org.example.ex_2.SetTobe",
+    {
+      "producator" : "Pearl",
+      "pret" : 1299.0,
+      "tip_tobe" : "ELECTRONICE",
+      "nr_tobe" : 5,
+      "nr_cinele" : 3
+    }
+  ],
+  [
+    "org.example.ex_2.Chitara",
+    {
+      "producator" : "Fender",
+      "pret" : 999.99,
+      "tip_chitara" : "ELECTRICA",
+      "nr_corzi" : 6
+    }
+  ],
+  [
+    "org.example.ex_2.SetTobe",
+    {
+      "producator" : "Tama",
+      "pret" : 1499.0,
+      "tip_tobe" : "ACUSTICE",
+      "nr_tobe" : 7,
+      "nr_cinele" : 4
+    }
+  ],
+  [
+    "org.example.ex_2.SetTobe",
+    {
+      "producator" : "Ludwig",
+      "pret" : 1799.0,
+      "tip_tobe" : "ACUSTICE",
+      "nr_tobe" : 6,
+      "nr_cinele" : 2
+    }
+  ]
+]

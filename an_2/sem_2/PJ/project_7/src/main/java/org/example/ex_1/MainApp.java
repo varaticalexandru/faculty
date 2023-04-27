@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class MainApp {
 
-    // deserializare carti in Map
+    // deserializare carti in HashMap
     public static Map<Integer, Carte> deserializeBooks(String filepath) throws IOException {
 
         File f = new File(filepath);
@@ -23,13 +23,19 @@ public class MainApp {
                 .readValue(f, new TypeReference<HashMap<Integer, Carte>>() {});
     }
 
-    // afisare Map (key, value)
+    // afisare HashMap (key, value)
     public static void displayMap(Map<Integer, Carte> carti) {
+
         System.out.println();
 
-        for (Map.Entry<Integer, Carte> entry: carti.entrySet()) {
-            System.out.println("Key: " + entry.getKey() + "\nValue: " + entry.getValue() + "\n");
-        }
+//        for (Map.Entry<Integer, Carte> entry: carti.entrySet()) {
+//            System.out.println("Key: " + entry.getKey() + "\nValue: " + entry.getValue() + "\n");
+//        }
+
+        carti
+                .entrySet()
+                .stream()
+                .forEach((entry) -> System.out.println(entry.getKey() + ": " + entry.getValue()));
     }
 
     // stergere carte din Map (dupa key)
@@ -39,11 +45,13 @@ public class MainApp {
 
     // adaugare carte la Map
     public static void addBookToMap(Map<Integer, Carte> carti, int id, Carte carte) {
+
         carti.putIfAbsent(id, carte);
     }
 
     // serializare in .json
     public static void serializeBooks(String filepath, Map<Integer, Carte> carti) throws IOException {
+
         File f = new File(filepath);
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(f, carti);
@@ -90,7 +98,7 @@ public class MainApp {
         displayMap(carti);
 
         // 2) stergere carte din colectie
-        System.out.print("Introduceti cheia cartii sterse: ");
+        System.out.print("\nIntroduceti cheia cartii sterse: ");
         int del_id = scanner.nextInt();
         scanner.nextLine(); // consuma \n
 

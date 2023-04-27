@@ -21,8 +21,12 @@ public class MainApp {
             sum += Integer.parseInt(String.valueOf(cnp.charAt(i))) * Integer.parseInt(String.valueOf(defaultCnp.charAt(i)));
         }
 
+        int cifraControl = Integer.parseInt(String.valueOf(cnp.charAt(cnp.length() - 1)));
+
         boolean condition_1 = Pattern.matches("^[1256]\\d{12}$", cnp);
-        boolean condition_2 = Integer.parseInt(String.valueOf(cnp.charAt(cnp.length() - 1))) == sum % 11;
+
+        boolean condition_2 =
+                (sum % 11 == 10) ? (cifraControl == 1) : (cifraControl == sum % 11);
 
         return condition_1 && condition_2;
     }
