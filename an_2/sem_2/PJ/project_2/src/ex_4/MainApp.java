@@ -14,7 +14,7 @@ public class MainApp {
         // verifica validitate cnp
 
         String defaultCnp = "279146358279";
-        Integer sum = 0;
+        int sum = 0;
         int k = 0;  // defaultCnp counter
 
         for (int i = 0; i < 12; i++) {
