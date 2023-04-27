@@ -1,5 +1,5 @@
 # importuri
-import argparse, random
+import argparse, random, re
 
 # working datasets
 S_ds = {1, 2, 5, 6, 7, 8, 9}    # 1,2: sec. XX || 5,6: sec. XXI || 7,8: rezidente || 9: cetateni straini
@@ -52,24 +52,22 @@ def generate_CNP():
         
     
 # functie verificare CNP valid
-import re
 def is_valid(cnp):
-    # verifica validitate cnp
 
     default_cnp = "279146358279"
     sum = 0
+    k = 0  # defaultCnp counter
 
     for i in range(12):
         sum += int(cnp[i]) * int(default_cnp[i])
 
     cifra_control = int(cnp[-1])
 
-    condition_1 = bool(re.match("^[1256]\\d{12}$", cnp))
+    condition_1 = bool(re.match("^[1256789]\\d{12}$", cnp))
 
-    condition_2 = cifra_control == sum % 11 if sum % 11 < 10 else cifra_control == 1
+    condition_2 = (cifra_control == 1) if sum % 11 == 10 else (cifra_control == sum % 11)
 
     return condition_1 and condition_2
-
 
 
 # functie main
