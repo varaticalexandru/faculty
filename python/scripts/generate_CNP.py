@@ -1,5 +1,4 @@
-import os, sys, argparse
-import random
+import argparse, random
 
 # working datasets
 S_ds = {1, 2, 5, 6, 7, 8, 9}    # 1,2: sec. XX || 5,6: sec. XXI || 7,8: rezidente || 9: cetateni straini
@@ -11,7 +10,11 @@ def generate_CNP():
     CNP = ""
 
     S = str(list(S_ds)[random.randint(0, len(S_ds) - 1)])  # random S
-    AA = str(random.randint(0, 99))  # random AA
+
+    # random AA
+    aux = str(random.randint(0, 99))
+    AA = aux if (len(aux) == 2) \
+        else '0' + aux
 
     # random LL
     aux = str(random.randint(1, 12))
