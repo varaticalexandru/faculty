@@ -80,5 +80,6 @@ if __name__ == "__main__":
 
     if args.number >= 1:
         for i in range(0, args.number):
-            print(generate_CNP())
-            # print("Valid\n" if is_valid(generate_CNP()) else "Invalid\n")
+            CNP = generate_CNP()
+            print(CNP)
+            print("Valid\n" if is_valid(CNP) else "Invalid\n")
