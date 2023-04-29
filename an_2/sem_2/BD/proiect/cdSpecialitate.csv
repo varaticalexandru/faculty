@@ -1,5 +1,5 @@
-codSpec	denumire	coefPlata
-gastro	gastroenterologie	1.4
-derm	dermatologie	1.2
-neuro	neurologie	1.3
-cardio	cardiologie	1.5
+codSpec,denumire,coefPlata
+gastro,gastroenterologie,1.4
+derm,dermatologie,1.2
+neuro,neurologie,1.3
+cardio,cardiologie,1.5
