@@ -1,5 +1,5 @@
 # importuri
-import argparse, random, re
+import argparse, random, re, datetime, calendar, csv
 
 # working datasets
 S_ds = {1, 2, 5, 6, 7, 8, 9}    # 1,2: sec. XX || 5,6: sec. XXI || 7,8: rezidente || 9: cetateni straini
@@ -13,9 +13,7 @@ def generate_CNP():
     S = str(list(S_ds)[random.randint(0, len(S_ds) - 1)])  # random S
 
     # random AA
-    aux = str(random.randint(0, 99))
-    AA = aux if (len(aux) == 2) \
-        else '0' + aux
+    AA = str(random.randint(1800, datetime.datetime.now().year-1))[2:]
 
     # random LL
     aux = str(random.randint(1, 12))
@@ -25,6 +23,7 @@ def generate_CNP():
     # random ZZ
     aux = str(random.randint(1, 31)) if LL in ['01', '03', '05', '07', '08', '10', '12'] \
         else str(random.randint(1, 30)) if LL in ['04', '06', '09', '11'] \
+        else str(random.randint(1, 29)) if calendar.isleap(datetime.datetime.now().year) \
         else str(random.randint(1, 28))
     
     ZZ = aux if (len(aux) == 2) \
@@ -35,9 +34,9 @@ def generate_CNP():
     JJ = aux if (len(aux) == 2) \
         else '0' + aux
 
-
+    # random NNN
     aux = random.randint(1, 999)
-    NNN = str(aux) if aux >= 100 else '0' + str(aux) if aux >= 10 else '00' + str(aux)  # random NNN
+    NNN = str(aux) if aux >= 100 else '0' + str(aux) if aux >= 10 else '00' + str(aux)
     
     CNP = S + AA + LL + ZZ + JJ + NNN # 12 cifre
 
@@ -49,7 +48,6 @@ def generate_CNP():
     CNP += str(sum % 11) if sum % 11 < 10 else '1'  # ultima cifra (de control)
 
     return CNP
-        
     
 # functie verificare CNP valid
 def is_valid(cnp):
@@ -67,6 +65,19 @@ def is_valid(cnp):
 
     return condition_1 and condition_2
 
+# functie generare n CNP-uri valide & serializare in fisier CSV
+def generate(n):
+
+
+    with open('CNP.csv', 'w', newline='') as csvfile:
+
+        writer = csv.writer(csvfile, delimiter=" ")
+
+        for i in range(0, n):
+                CNP = generate_CNP()
+                #print(CNP, "Valid\n" if is_valid(CNP) else "Invalid\n")
+                writer.writerow([CNP])
+
 
 # functie main
 if __name__ == "__main__":
@@ -79,7 +90,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.number >= 1:
-        for i in range(0, args.number):
-            CNP = generate_CNP()
-            print(CNP)
-            print("Valid\n" if is_valid(CNP) else "Invalid\n")
+        generate(args.number)
