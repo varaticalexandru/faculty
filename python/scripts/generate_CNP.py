@@ -2,7 +2,7 @@
 import argparse, random, re, datetime, calendar, csv
 
 # working datasets
-S_ds = {1, 2, 5, 6, 7, 8, 9}    # 1,2: sec. XX || 5,6: sec. XXI || 7,8: rezidente || 9: cetateni straini
+S_ds = {1, 2, 3, 4, 5, 6, 7, 8, 9}    # 1,2: sec. XX || 3,4: sec XIX || 5,6: sec. XXI || 7,8: rezidente || 9: cetateni straini
 CNP_ref = [2, 7, 9, 1, 4, 6, 3, 5, 8, 2, 7, 9]  # CNP de referinta
 
 # functie generare CNP valid
@@ -10,10 +10,13 @@ def generate_CNP():
 
     CNP = ""
 
-    S = str(list(S_ds)[random.randint(0, len(S_ds) - 1)])  # random S
+    # random S
+    S = str(list(S_ds)[random.randint(0, len(S_ds) - 1)])
 
     # random AA
-    AA = str(random.randint(1800, datetime.datetime.now().year-1))[2:]
+    AA = str(random.randint(1800, 1899))[2:]  if S == '3' or S == '4' \
+        else str(random.randint(1900, 1999))[2:]  if S == '1' or S == '2' \
+        else str(random.randint(2000, datetime.datetime.now().year-1))[2:]    
 
     # random LL
     aux = str(random.randint(1, 12))
@@ -45,7 +48,7 @@ def generate_CNP():
     for i in range(0, 12):
         sum += CNP_ref[i] * int(CNP[i])
 
-    CNP += str(sum % 11) if sum % 11 < 10 else '1'  # ultima cifra (de control)
+    CNP += str(sum % 11) if sum % 11 < 10 else '1'  # + ultima cifra (de control)
 
     return CNP
     
@@ -59,7 +62,7 @@ def is_valid(cnp):
 
     cifra_control = int(cnp[-1])
 
-    condition_1 = bool(re.match("^[1256789]\\d{12}$", cnp))
+    condition_1 = bool(re.match("^[123456789]\\d{12}$", cnp))
 
     condition_2 = (cifra_control == 1) if sum % 11 == 10 else (cifra_control == sum % 11)
 
@@ -75,7 +78,7 @@ def generate(n):
 
         for i in range(0, n):
                 CNP = generate_CNP()
-                #print(CNP, "Valid\n" if is_valid(CNP) else "Invalid\n")
+                # print(CNP, "Valid\n" if is_valid(CNP) else "Invalid\n")
                 writer.writerow([CNP])
 
 
