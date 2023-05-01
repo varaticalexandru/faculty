@@ -64,7 +64,7 @@ function traverse {
 
     if [[ -f $path && $(grep -E -q "\.tar$" $path) ]]   # check if file
     then
-        echo -e "Error: path points to a file other than .tar archive."
+        echo -e "Error: path points to a file other than .tar archive or directory."
         exit 3
 
     elif [[ -d $path ]]
