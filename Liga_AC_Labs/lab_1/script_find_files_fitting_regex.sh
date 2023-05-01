@@ -63,7 +63,7 @@ function traverse {
     path=$1
     re=${2:-.*}
 
-    if [[ -f "$path" && ! -d "$path" && ! $(find "$path" -name "*.tar*") ]]   # check if file other than dir and archive
+    if [[ -f "$path" && ! -d "$path" && ! $(find "$path" -name "*.tar*") ]]   # check if filetype other than dir and archive
     then
         echo -e "Error: path is neither a dir nor a .tar* archive."
         exit 3
