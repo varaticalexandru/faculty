@@ -2,7 +2,11 @@
 
 # only works as a non-root user, exits with a ”must not be root” error
 # gets a directory or tar archive (*.tar.gz, *.tgz) as the main argument
+<<<<<<< HEAD:Liga_AC_Labs/lab_1/find_files_fitting_regex_script.sh
 # traverses all of it and its subdirectories/archives to find all files containing a certain RegEx in
+=======
+# traverses all of it and its directories/archives to find all files containing a certain RegEx in
+>>>>>>> f5571bd49563368a98178fb388d71804fe7a817f:Liga_AC_Labs/lab_1/script_find_files_fitting_regex.sh
 # them and print their file names. (-n argument must be given for filename printing)
 # the RegEx pattern argument is provided as the key-value flag -re "<the RegEx>".
 # if tar archives are found, search for files in them as well do not leave any evidence that you
@@ -63,9 +67,15 @@ function traverse {
     path=$1
     re=${2:-.*}
 
+<<<<<<< HEAD:Liga_AC_Labs/lab_1/find_files_fitting_regex_script.sh
     if [[ -f "$path" && ! -d "$path" && ! $(find "$path" -name "*.tar*") ]]   # check if file other than dir and archive
     then
         echo -e "Error: path is neither a dir nor a .tar* archive."
+=======
+    if [[ -f $path && $(grep -E -q "\.tar$" $path) ]]   # check if file
+    then
+        echo -e "Error: path points to a file other than .tar archive or directory."
+>>>>>>> f5571bd49563368a98178fb388d71804fe7a817f:Liga_AC_Labs/lab_1/script_find_files_fitting_regex.sh
         exit 3
 
     elif [[ $path == *.tar* ]]   # check if .tar* archive
