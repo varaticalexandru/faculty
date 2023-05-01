@@ -2,7 +2,7 @@
 
 # only works as a non-root user, exits with a ”must not be root” error
 # gets a directory or tar archive (*.tar.gz, *.tgz) as the main argument
-# traverses all of it and its subpathectories/archives to find all files containing a certain RegEx in
+# traverses all of it and its directories/archives to find all files containing a certain RegEx in
 # them and print their file names. (-n argument must be given for filename printing)
 # the RegEx pattern argument is provided as the key-value flag -re "<the RegEx>".
 # if tar archives are found, search for files in them as well do not leave any evidence that you
