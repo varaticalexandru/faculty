@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # only works as a non-root user, exits with a ”must not be root” error
-# gets a pathectory or tar archive (*.tar.gz, *.tgz) as the main argument
-# traverses all of it and its subpathectories/archives to find all files containing a certain RegEx in
+# gets a directory or tar archive (*.tar.gz, *.tgz) as the main argument
+# traverses all of it and its subdirectories/archives to find all files containing a certain RegEx in
 # them and print their file names. (-n argument must be given for filename printing)
 # the RegEx pattern argument is provided as the key-value flag -re "<the RegEx>".
 # if tar archives are found, search for files in them as well do not leave any evidence that you
@@ -58,29 +58,27 @@ function checkUser {
 function traverse {
 
     path=""; re=""; 
-    local fitting=()
+    local fitting=();
 
-    path=$1; re="$2"; 
+    path=$1
+    re=${2:-.*}
 
-    if [[ -f $path && $(grep -E -q "\.tar" $path) ]]   # check if file
+    if [[ -f "$path" && ! -d "$path" && ! $(find "$path" -name "*.tar*") ]]   # check if file other than dir and archive
     then
-        echo -e "Error: path points to a file other than .tar archive."
+        echo -e "Error: path is neither a dir nor a .tar* archive."
         exit 3
 
-    elif [[ -d $path ]]
+    elif [[ $path == *.tar* ]]   # check if .tar* archive
     then
-        :   # do nothing
-
-    else    # then is .tar* archive
 
         mkdir "/tmp/temp/"
 
-        if file $path | grep -E -q 'tar archive'   # check if .tar archive
+        if file $path | grep -E -q 'tar archive'   # check if .tar
         then
     
             tar -xf $path -C /tmp/temp
 
-        elif file $path | grep -E -q 'gzip'        # check if .tar.gz archive
+        elif file $path | grep -E -q 'gzip'        # check if .tar.gz
         then
 
             tar -xzf $path -C /tmp/temp
@@ -144,9 +142,16 @@ do
             then
                 echo "Error: target path (main argument) not provided."
                 exit 2
-            else
-                path_arg=$1
-            fi ;;
+            fi
+            
+            if [[ ! -e "$1" ]]
+            then
+                echo "Error: invalid target path."
+                exit 5
+            fi
+
+            path_arg=$1
+            ;;
     esac
 
     shift
