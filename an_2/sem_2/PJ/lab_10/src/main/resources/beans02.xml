@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    <bean id="persoana" class="org.example.ex_1.Persoana">-->
+<!--        <property name="nume" value="Popescu"/>-->
+<!--        <property name="varsta" value="20"/>-->
+<!--        <property name="adresa" ref="adresa"/>-->
+<!--    </bean>-->
+
+
+<!--    <bean id="adresa" class="org.example.ex_1.Adresa">-->
+<!--        <constructor-arg value="2"/>-->
+<!--        <constructor-arg value="Venus"/>-->
+<!--        <constructor-arg value="Timisoara"/>-->
+<!--    </bean>-->
+
+    <bean id="persoana2" class="org.example.ex_1.Persoana">
+        <property name="nume" value="Popescu"/>
+        <property name="varsta" value="20"/>
+        <property name="adresa">
+            <bean class="org.example.ex_1.Adresa">
+                <constructor-arg value="2"/>
+                <constructor-arg value="Venus"/>
+                <constructor-arg value="Timisoara"/>
+            </bean>
+        </property>
+    </bean>
+
+
+</beans>
