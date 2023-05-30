@@ -148,7 +148,7 @@ public class Angajat {
 
          return angajati
                 .stream()
-                .filter( (a) -> a.getData_angajarii().compareTo(target) >= 0 )
+                .filter( (a) -> a.getData_angajarii().isAfter(target) )
                 .filter( (a) -> a.getPost().contains("Sef") || a.getPost().contains("Director"))
                 .collect(Collectors.toList());
     }
@@ -195,6 +195,12 @@ public class Angajat {
             e.printStackTrace();
             System.out.println("Eroare ! Nu exista un prim angajat !");
         }
+
+
+//        angajati
+//                .stream()
+//                .min( (a, b) -> a.getData_angajarii().compareTo(b.getData_angajarii()))
+//                .ifPresentOrElse(System.out::println, () -> System.out.println("Eroare ! Nu exista un prim angajat !"));
 
     }
 
