@@ -1,0 +1,19 @@
+{
+    "employees": [
+      {
+        "id": 1,
+        "name": "Marcel Fieraru",
+        "department": "Engineering"
+      },
+      {
+        "id": 2,
+        "name": "Virgilia Popescu",
+        "department": "Marketing"
+      },
+      {
+        "id": 3,
+        "name": "Daniel Cafeluta",
+        "department": "Finance"
+      }
+    ]
+}
