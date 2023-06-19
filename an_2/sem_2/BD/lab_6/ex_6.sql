@@ -26,3 +26,5 @@ JOIN
 Curs c ON c.cid = ctr.cid
 WHERE c.pid != (SELECT p.pid FROM Profesor P WHERE p.nume = 'Ciprian Porumbescu')
 ;
+
+

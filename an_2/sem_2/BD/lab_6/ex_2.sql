@@ -1,5 +1,8 @@
 -- fara operatii pe multimi
 
-SELECT s.sid, s.nume, s.an, s.bursa
-FROM Student s
-WHERE (s.bursa < 750 OR s.bursa > 900) AND s.bursa IS NOT NULL
+select 
+    s.sid, s.nume, s.an, s.bursa
+from
+    student s
+where
+    (s.bursa < 750 or s.bursa > 900) and s.bursa is not null and s.bursa > 0

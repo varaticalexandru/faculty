@@ -2,11 +2,14 @@
 -- numele, anul si CNP-ul. Pentru studenții care nu au completat 
 -- CNP-ul se va afișa ‘CNP necompletat’.
 
-SELECT nume, an,
-    CASE WHEN cnp IS NULL THEN 'CNP necompletat'
-    ELSE CNP
-    END
-    as CNP
-
-FROM student
-WHERE an = 2;
+select
+    nume,
+    an,
+    case
+        when cnp is null then 'CNP necompletat'
+        else cnp
+    end as CNP
+from
+    student s
+where
+    an = 2

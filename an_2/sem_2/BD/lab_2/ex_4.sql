@@ -3,9 +3,16 @@
 -- data nașterii. Anul curent se consideră cel obținut cu SYSDATE. 
 
 
-SELECT nume,
-    extract(YEAR FROM DATAN) as an_nastere,
-    datan as data_nastere
+select
+    nume,
+    an,
+    datan,
+    (extract(year from sysdate) - extract(year from datan)) as varsta
 
-FROM Student
-WHERE abs(extract(YEAR FROM SYSDATE) - extract(YEAR FROM DATAN)) >= 19;
+from
+    student s
+
+where
+    extract(year from sysdate) - extract(year from datan) = 20
+
+order by varsta asc, nume asc

@@ -1,13 +1,10 @@
 -- Să se listeze toți studenții care au cursuri în ziua de 
 -- ’Luni’
 
-SELECT s.nume as nume_student, c.titlu as titlu_curs, c.zi as zi_curs
-FROM 
-
-Contract ctr JOIN Curs c 
-ON ctr.cid = c.cid
-
-FULL JOIN Student s
-ON ctr.sid = s.sid
-
-WHERE c.zi = 'Luni';
+select
+    s.sid, s.cnp, s.nume, c.cid, c.titlu, c.zi
+from
+    student s join contract ctr on s.sid = ctr.sid
+    join curs c on ctr.cid = c.cid
+where
+    c.zi = 'Luni'

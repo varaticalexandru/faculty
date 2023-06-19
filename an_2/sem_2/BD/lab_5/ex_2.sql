@@ -1,30 +1,12 @@
 -- să se afișeze valoarea bursei 
 -- minime la facultatea AC
 
-SELECT distinct bursa as bursa_minima
-FROM
-(
-SELECT s.sid, s.nume, s.bursa
-FROM Student s
-WHERE s.bursa <= ALL
-(SELECT bursa
-FROM Student
-WHERE bursa IS NOT NULL AND bursa > 0)
-)
-WHERE bursa > 0
-
-
--- să se afișeze valoarea bursei 
--- minime la facultatea AC
-
-SELECT distinct bursa as bursa_minima
-FROM
-(
-SELECT s.sid, s.nume, s.bursa
-FROM Student s
-WHERE s.bursa <= ALL
-(SELECT bursa
-FROM Student
-WHERE bursa IS NOT NULL AND bursa > 0)
-)
-WHERE bursa > 0
+select
+    distinct bursa as bursa_minima
+from
+    student s
+where
+    bursa <= all
+    (select bursa from student where bursa is not null and bursa > 0) 
+    and
+    bursa > 0

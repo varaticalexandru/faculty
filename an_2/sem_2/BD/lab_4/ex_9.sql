@@ -3,18 +3,13 @@
 -- nașterii și nume
 
 
-SELECT s.nume as nume_student, c.titlu as titlu_curs, c.sala as sala_curs, sl.nr_locuri
-FROM 
-
-Contract ctr JOIN Curs c 
-ON ctr.cid = c.cid
-
-JOIN Student s
-ON ctr.sid = s.sid
-
-JOIN Sala sl
-ON c.sala = sl.cods
-
-WHERE sl.nr_locuri < 200
-
-ORDER BY s.an, s.nume;
+select
+    s.sid, s.cnp, s.nume, c.titlu, c.zi, c.sala, s.nr_locuri
+from
+    student s join contract ctr on s.sid = ctr.sid
+    join curs c on ctr.cid = c.cid
+    join sala s on c.sala = s.cods
+where
+    s.nr_locuri < 200
+order by
+    s.datan, s.nume

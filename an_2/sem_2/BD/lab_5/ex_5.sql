@@ -2,11 +2,10 @@
 -- încă un student care are exact aceiași bursă și exact aceiași 
 -- medie, indiferent de facultatea la care sunt înscriși.
 
-SELECT s.sid, s.nume, s.bursa, s.media
-FROM Student s
-
-WHERE EXISTS
-
-(SELECT sid
-FROM Student
-WHERE s.sid != sid AND s.bursa = bursa AND s.media = media);
+select
+    s.sid, s.nume, s.bursa, s.media
+from
+    student s
+where
+    exists
+    (select sid from student where s.sid != sid and s.bursa = bursa and s.media = media)

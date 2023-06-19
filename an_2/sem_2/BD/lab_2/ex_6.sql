@@ -3,10 +3,17 @@
 -- interogare afișați apoi studenții care nu au bursă.
 
 
-SELECT * 
-FROM Student
-WHERE bursa iS NULL;
+select
+    *
+from
+    student s
+where
+    bursa is null
 
-SELECT *
-FROM Student
-WHERE bursa = 0;
+
+select
+    *
+from
+    student s
+where
+    bursa = 0

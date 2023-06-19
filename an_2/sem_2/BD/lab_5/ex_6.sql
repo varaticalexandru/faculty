@@ -3,25 +3,24 @@
 -- posibilă în universitate. (Obs.: Se pot utiliza două sau mai multe 
 -- subinterogări succesive imbricate)
 
-SELECT f.fid, f.nume
-FROM Facultate f
-WHERE
+select
+    f.fid, f.nume
+from
+    facultate f
+where
+    exists
+    (select sid, bursa 
+    from student s
+    where bursa = 
+        (select distinct bursa 
+        from student 
+        where bursa >= all 
+            (select bursa 
+            from student 
+            where bursa is not null and bursa > 0) 
+            and bursa > 0
+        )
 
-EXISTS
-(
-    SELECT s.nume, s.bursa
-    FROM Student s
-    WHERE s.bursa = 
-
-    (SELECT distinct bursa as bursa_minima
-    FROM
-    (
-    SELECT s.sid, s.nume, s.bursa
-    FROM Student s
-    WHERE s.bursa >= ALL
-    (SELECT bursa
-    FROM Student
-    WHERE bursa IS NOT NULL AND bursa > 0)
+    and
+    s.fid = f.fid
     )
-    WHERE bursa > 0)
-)

@@ -2,11 +2,11 @@
 -- și respectiv băieți. Să se afișeze toți studenți afișând numele, anul 
 -- de studiu și grupul (fete sau băieți) din care fac parte
 
-SELECT sid, cnp, nume, datan, adr, an, media, bursa, fid,
-    CASE WHEN substr(cnp, 0, 1)=1 OR substr(cnp, 0, 1)=3 OR substr(cnp, 0, 1)=5 OR substr(cnp, 0, 1)=7
-    THEN 'baieti'
-    ELSE 'fete'
-    END
-    as grup
-
-FROM Student;
+select
+    nume, an,
+    case
+        when substr(cnp, 0, 1)=2 or substr(cnp, 0, 1)=4 or substr(cnp, 0, 1)=6 or substr(cnp, 0, 1)=8 then 'F'
+        else 'M'
+    end as grup
+from
+    student s

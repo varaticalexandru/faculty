@@ -2,10 +2,18 @@
 -- studenții de sex feminin și cealaltă pe cei de sex masculin. Se va 
 -- afișa numele, cnp-ul și anul de studiu.
 
-SELECT sid, cnp, nume, datan, adr, an, media, bursa, fid
-FROM Student
-WHERE substr(cnp, 0, 1)=1 OR substr(cnp, 0, 1)=3 OR substr(cnp, 0, 1)=5 OR substr(cnp, 0, 1)=7;
+-- sex f
+select
+    nume, cnp, an
+from
+    student
+where
+    substr(cnp, 0, 1)=2 or substr(cnp, 0, 1)=4 or substr(cnp, 0, 1)=6 or substr(cnp, 0, 1)=8
 
-SELECT sid, cnp, nume, datan, adr, an, media, bursa, fid
-FROM Student
-WHERE substr(cnp, 0, 1)!=1 AND substr(cnp, 0, 1)!=3 AND substr(cnp, 0, 1)!=5 AND substr(cnp, 0, 1)!=7;
+-- sex m
+select
+    nume, cnp, an
+from
+    student
+where
+    substr(cnp, 0, 1)!=2 and substr(cnp, 0, 1)!=4 and substr(cnp, 0, 1)!=6 and substr(cnp, 0, 1)!=8
