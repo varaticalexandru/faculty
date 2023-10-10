@@ -1,0 +1,16 @@
+C:\Users\student\Desktop\WindowsFormsApplication20\WindowsFormsApplication20\bin\Debug\WindowsFormsApplication20.exe
+C:\Users\student\Desktop\WindowsFormsApplication20\WindowsFormsApplication20\bin\Debug\WindowsFormsApplication20.pdb
+C:\Users\student\Desktop\WindowsFormsApplication20\WindowsFormsApplication20\obj\x86\Debug\WindowsFormsApplication20.Properties.Resources.resources
+C:\Users\student\Desktop\WindowsFormsApplication20\WindowsFormsApplication20\obj\x86\Debug\WindowsFormsApplication20.csproj.GenerateResource.Cache
+C:\Users\student\Desktop\WindowsFormsApplication20\WindowsFormsApplication20\obj\x86\Debug\WindowsFormsApplication20.exe
+C:\Users\student\Desktop\WindowsFormsApplication20\WindowsFormsApplication20\obj\x86\Debug\WindowsFormsApplication20.pdb
+C:\Users\student\Desktop\WindowsFormsApplication20\WindowsFormsApplication20\obj\x86\Debug\WindowsFormsApplication20.Form1.resources
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_2\project\bin\Debug\WindowsFormsApplication20.exe
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_2\project\bin\Debug\WindowsFormsApplication20.pdb
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_2\project\obj\x86\Debug\WindowsFormsApplication20.csproj.AssemblyReference.cache
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_2\project\obj\x86\Debug\WindowsFormsApplication20.Form1.resources
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_2\project\obj\x86\Debug\WindowsFormsApplication20.Properties.Resources.resources
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_2\project\obj\x86\Debug\WindowsFormsApplication20.csproj.GenerateResource.cache
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_2\project\obj\x86\Debug\WindowsFormsApplication20.csproj.CoreCompileInputs.cache
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_2\project\obj\x86\Debug\WindowsFormsApplication20.exe
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_2\project\obj\x86\Debug\WindowsFormsApplication20.pdb

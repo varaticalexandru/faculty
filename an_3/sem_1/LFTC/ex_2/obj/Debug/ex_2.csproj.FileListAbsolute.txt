@@ -1,0 +1,10 @@
+C:\Users\varat\GIT\faculty\an_3\sem_1\LFTC\ex_2\bin\Debug\ex_2.exe.config
+C:\Users\varat\GIT\faculty\an_3\sem_1\LFTC\ex_2\bin\Debug\ex_2.exe
+C:\Users\varat\GIT\faculty\an_3\sem_1\LFTC\ex_2\bin\Debug\ex_2.pdb
+C:\Users\varat\GIT\faculty\an_3\sem_1\LFTC\ex_2\obj\Debug\ex_2.csproj.AssemblyReference.cache
+C:\Users\varat\GIT\faculty\an_3\sem_1\LFTC\ex_2\obj\Debug\ex_2.Properties.Resources.resources
+C:\Users\varat\GIT\faculty\an_3\sem_1\LFTC\ex_2\obj\Debug\ex_2.csproj.GenerateResource.cache
+C:\Users\varat\GIT\faculty\an_3\sem_1\LFTC\ex_2\obj\Debug\ex_2.csproj.CoreCompileInputs.cache
+C:\Users\varat\GIT\faculty\an_3\sem_1\LFTC\ex_2\obj\Debug\ex_2.exe
+C:\Users\varat\GIT\faculty\an_3\sem_1\LFTC\ex_2\obj\Debug\ex_2.pdb
+C:\Users\varat\GIT\faculty\an_3\sem_1\LFTC\ex_2\obj\Debug\ex_2.Form1.resources
