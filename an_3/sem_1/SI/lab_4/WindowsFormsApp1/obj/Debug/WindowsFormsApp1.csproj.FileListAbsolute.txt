@@ -1,0 +1,9 @@
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_4\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_4\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_4\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

@@ -1,0 +1,10 @@
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_4\test_sapt_3\bin\Debug\test_sapt_3.exe.config
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_4\test_sapt_3\bin\Debug\test_sapt_3.exe
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_4\test_sapt_3\bin\Debug\test_sapt_3.pdb
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_4\test_sapt_3\obj\Debug\test_sapt_3.csproj.AssemblyReference.cache
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_4\test_sapt_3\obj\Debug\test_sapt_3.Form1.resources
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_4\test_sapt_3\obj\Debug\test_sapt_3.Properties.Resources.resources
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_4\test_sapt_3\obj\Debug\test_sapt_3.csproj.GenerateResource.cache
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_4\test_sapt_3\obj\Debug\test_sapt_3.csproj.CoreCompileInputs.cache
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_4\test_sapt_3\obj\Debug\test_sapt_3.exe
+C:\Users\varat\GIT\faculty\an_3\sem_1\SI\lab_4\test_sapt_3\obj\Debug\test_sapt_3.pdb

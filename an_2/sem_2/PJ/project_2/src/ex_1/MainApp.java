@@ -48,8 +48,6 @@ public class MainApp {
         Integer key = Arrays.binarySearch(judete_, judet_cautat);
         System.out.println("\nCheia/Indexul judetului cautat: " + key);
 
-
-
         br.close();
         scanner.close();
     }

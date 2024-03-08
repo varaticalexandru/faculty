@@ -1,3 +1,0 @@
-﻿  lexer.c
-C:\Users\varat\GIT\faculty\an_3\sem_1\LFTC\lexer\lexer.h(92,22): warning C4090: 'return': different 'const' qualifiers
-  lexer.vcxproj -> C:\Users\varat\GIT\faculty\an_3\sem_1\LFTC\lexer\x64\Debug\lexer.exe
