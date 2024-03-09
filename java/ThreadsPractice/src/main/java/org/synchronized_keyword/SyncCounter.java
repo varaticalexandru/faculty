@@ -4,18 +4,6 @@ public class SyncCounter {
 
     private int count = 0;
 
-    public void incCount() {
-        synchronized (this) {
-            this.count++;
-        }
-    }
-
-    public int getCount() {
-        synchronized (this) {
-            return this.count;
-        }
-    }
-
     public int incAndGetCount() {
         synchronized (this) {
             this.count++;

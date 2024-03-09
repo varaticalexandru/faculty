@@ -1,8 +1,7 @@
-package org.endava;
+package org.avadne;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
 import java.util.stream.Collectors;
 
 public class StringOccurrence {
