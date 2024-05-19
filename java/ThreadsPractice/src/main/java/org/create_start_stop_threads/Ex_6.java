@@ -11,7 +11,7 @@ public class Ex_6 {
         };
 
         Thread thread = new Thread(runnable);
-        thread.setDaemon(true);
+        thread.setDaemon(true); // daemon thread
         thread.start();
 
         sleep(3000);

@@ -1,0 +1,146 @@
+
+SW1, SW3:
+
+vlan 10
+name v_10
+exit
+
+vlan 20
+name v_20
+exit
+
+vlan 99
+name MGMT
+exit
+
+interface range fa0/1-2
+channel-group 1 mode active
+exit
+
+interface port-channel 1
+switchport mode trunk
+switchport trunk allowed vlan 10,20
+------------------------------------
+interface range fa0/3-4
+channel-group 6 mode on
+exit
+
+interface port-channel 6
+switchport mode trunk
+switchport trunk allowed vlan 10,20
+exit
+
+-------------------------------------
+
+do sh etherchannel summary
+
+
+-------------------------------------
+SW3, SW5:
+
+interface range fa0/3-4
+channel-group 2 mode desirable
+exit
+
+interface port-channel 2
+switchport mode trunk
+switchport trunk allowed vlan 10,20
+exit
+
+-----------------------------------
+
+interface range fa0/1-2
+channel-group 3 mode on
+exit
+
+interface port-channel 3
+switchport mode trunk
+switchport trunk allowed vlan 10,20
+exit
+
+------------------------------------
+
+SW4:
+
+interface range fa0/1-2
+channel-group 3 mode on
+exit
+
+interface port-channel 3
+switchport mode trunk
+switchport trunk allowed vlan 10,20
+exit
+
+-----------------------------------
+
+interface range fa0/3-4
+channel-group 4 mode desirable
+exit
+
+interface port-channel 4
+switchport mode trunk
+switchport trunk allowed vlan 10,20
+exit
+
+------------------------------------
+
+SW2:
+
+interface range fa0/3-4
+channel-group 4 mode desirable
+exit
+
+interface port-channel 4
+switchport mode trunk
+switchport trunk allowed vlan 10,20
+exit
+------------------------------------
+interface range fa0/1-2
+channel-group 5 mode active
+exit
+
+interface port-channel 5
+switchport mode trunk
+switchport trunk allowed vlan 10,20
+exit
+------------------------------------
+
+SW0:
+interface range fa0/1-2
+channel-group 5 mode active
+exit
+
+interface port-channel 5
+switchport mode trunk
+switchport trunk allowed vlan 10,20
+exit
+------------------------------------
+interface range fa0/3-4
+channel-group 6 mode on
+exit
+
+interface port-channel 6
+switchport mode trunk
+switchport trunk allowed vlan 10,20
+exit
+
+-----------------------------------
+
+
+spanning-tree mode rapid-pvst
+spanning-tree vlan 10 root primary
+spanning-tree vlan 30 root secondary
+
+spanning-tree portfast default
+spanning-tree portfast bpduguard default
+spanning-tree bpduguard enable
+
+
+
+
+
+
+
+
+
+

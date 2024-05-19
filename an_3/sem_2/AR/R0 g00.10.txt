@@ -1,0 +1,114 @@
+R0 g0/0.10
+
+deny 192.168.10.4	0.0.0.0
+deny host 192.168.10.4	(alternativa)
+permit 192.168.10.0 	0.0.0.255
+
+
+SW1:
+
+Switch(config-if)#switchport port-se
+Switch(config-if)#switchport port-security
+Switch(config-if)#do sh port-sec inter fa0/3
+
+Switch(config-if)#switchport port-security mac-address 0002.4A20.CCCB
+
+Switch(config-if)#do sh port-sec
+
+Switch(config-if)#do sh port-sec inter fa0/3
+
+Switch(config-if)#switchport port-security violation ?
+
+Switch(config)#spanning-tree vlan 10 ?
+  priority  Set the bridge priority for the spanning tree
+  root      Configure switch as root
+  <cr>
+Switch(config)#sp
+Switch(config)#spanning-tree po
+Switch(config)#spanning-tree ?
+  mode      Spanning tree operating mode
+  portfast  Spanning tree portfast options
+  vlan      VLAN Switch Spanning Tree
+Switch(config)#spanning-tree port
+Switch(config)#spanning-tree portfast bpd
+Switch(config)#spanning-tree portfast bpduguard def
+Switch(config)#spanning-tree portfast bpduguard default
+Switch(config)#do wr
+
+
+R0:
+
+Router>
+Router>en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#int gi0/0.10
+Router(config-subif)#enc
+Router(config-subif)#encapsulation do
+Router(config-subif)#encapsulation dot1Q 10
+Router(config-subif)#ip ad
+Router(config-subif)#ip address 192.168.10.254 255.255.255.0
+Router(config-subif)#int g0/0.20
+Router(config-subif)#enc
+Router(config-subif)#encapsulation do
+Router(config-subif)#encapsulation dot1Q 20
+Router(config-subif)#ip ad
+Router(config-subif)#ip address 192.168.20.254 255.255.255.0
+Router(config-subif)#int g0/0.99
+Router(config-subif)#enc
+Router(config-subif)#encapsulation do
+Router(config-subif)#encapsulation dot1Q 99
+Router(config-subif)#ip
+Router(config-subif)#ip ad
+Router(config-subif)#ip address 192.168.99.254 255.255.255.0
+Router(config-subif)#int g0/0
+Router(config-if)#no sh
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed state to up
+
+%LINK-5-CHANGED: Interface GigabitEthernet0/0.10, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.10, changed state to up
+
+%LINK-5-CHANGED: Interface GigabitEthernet0/0.20, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.20, changed state to up
+
+%LINK-5-CHANGED: Interface GigabitEthernet0/0.99, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0.99, changed state to up
+
+Router(config-if)#
+Router(config-if)#do wr
+Building configuration...
+[OK]
+Router(config-if)#exit
+Router(config)#
+Router(config)#
+Router(config)#int g0/1
+Router(config-if)#ip ad
+Router(config-if)#ip address 10.0.0.1 255.255.255.252
+Router(config-if)#no sh
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/1, changed state to up
+
+Router(config-if)#
+Router(config-if)#
+Router(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up
+
+Router(config-if)#
+Router(config-if)#exit
+Router(config)#ip route 10.0.0.0 255.255.255.252 10.0.0.1
+%Invalid next hop address (it's this router)
+Router(config)#ip route 10.0.0.0 255.255.255.252 10.0.0.2
+Router(config)#do wr
+Building configuration...
+[OK]
+Router(config)#
+Router(config)#
+Router(config)#

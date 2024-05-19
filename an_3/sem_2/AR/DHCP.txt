@@ -1,0 +1,32 @@
+= R0 =
+en
+conf t
+int gi0.0
+ip address 192.168.1.1 255.255.255.0
+
+ip dhcp excluded-address 192.168.1.1
+ip dhcp excluded-address 192.168.1.2 192.168.1.11
+
+ip dhcp pool LAN1
+default-router 192.168.1.1
+dns-server 8.8.8.8
+network 192.168.1.0 255.255.255.0
+
+= PC0 =
+ipconfig /release
+ipconfig /renew
+
+= R0 =
+erase startup-config
+reload
+
+= R0=
+int g0/0.20
+ip helper-address 10.0.0.2
+
+= R1 =
+ip route 192.168.20.0 255.255.255.0 10.0.0.1
+
+= SW0 =
+int vlan 99
+ip address dhcp

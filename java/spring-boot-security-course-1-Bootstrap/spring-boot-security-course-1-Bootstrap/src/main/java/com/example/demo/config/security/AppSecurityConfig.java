@@ -1,7 +1,10 @@
 package com.example.demo.config.security;
 
+import com.example.demo.jwt.JwtAuthFilter;
+import com.example.demo.jwt.JwtVerifierFilter;
 import com.example.demo.model.AppUserRole;
 import com.example.demo.service.auth.AppUserService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,10 +15,9 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import java.util.concurrent.TimeUnit;
 
 @Configuration
 @EnableWebSecurity
@@ -25,9 +27,29 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final PasswordEncoder passwordEncoder;
     private final AppUserService appUserService;
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final JwtSecret jwtSecret;
+    private final JwtConfig jwtConfig;
+    private final SessionConfig sessionConfig;
 
 
     @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .csrf().disable()
+                .sessionManagement()
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .addFilter(new JwtAuthFilter(objectMapper, jwtSecret.getKey(), authenticationManager(), jwtConfig, jwtSecret))
+                .addFilterAfter(new JwtVerifierFilter(jwtConfig, jwtSecret), JwtAuthFilter.class)
+                .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/test").permitAll()
+                .antMatchers("/api/v1/students/**").hasRole(AppUserRole.STUDENT.name())
+                .anyRequest()
+                .authenticated();
+    }
+
+    /*@Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http
@@ -59,7 +81,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .rememberMe()
                     .tokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(21))
-                    .key("somethingverysecure")
+                    .key(sessionConfig.getSecretKey())
                     .rememberMeParameter("remember-me")
                 .and()
                 .logout()
@@ -69,7 +91,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                     .invalidateHttpSession(true)
                     .deleteCookies("JSESSIONID", "remember-me")
                     .logoutSuccessUrl("/login");
-    }
+    }*/
 
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {

@@ -1,0 +1,15 @@
+Context:
+	- Industria Circuitelor Digitale si relatia cu evolutia semiconductoarelor : 
+		ASIC (Application Specific Integrated Circuit)
+		Probleme:
+			natura singulara: proiectat sa indeplineasca o singura functie
+			lipsa reconfigurabilitate (nu poate realiza functii pentru care nu a fost preconceput)
+		
+		Solutia	
+		FPGA (Field Programmable Gate Arrays)
+			IC/device logic reprogramabil/reconfigurabil
+			poate realiza mai multe operatii, fara a fi refabricat
+		
+		Arhitectura hardware
+			blocuri logice: pot fi reconfigurate sa realizeze mai multe functii (comb/seq)
+			interconexiuni: retea de cai configurabile

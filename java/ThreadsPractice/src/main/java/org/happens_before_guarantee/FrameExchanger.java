@@ -5,7 +5,7 @@ public class FrameExchanger {
     private long framesStoredCount = 0;
     private long framesTakenCount = 0;
 
-    private volatile boolean hasNewFrame = false; // visibility guarantee (all other vars visible to the thread will also be flushed/read from main memory alongside this one)
+    private volatile boolean hasNewFrame = false; // visibility guarantee (all other vars visible to the thread will also be flushed/read to/from main memory alongside this one)
     private Frame frame = null;
 
     public void storeFrame(Frame frame) {

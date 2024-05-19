@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Laborator 2</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <center>
+        <head>
+            <H1>Inserare angajat nou</H1>
+        </head>
+    </center>
+
+    <center>
+        <form method="POST" action="inserare.php">
+            Nume: <input type="text" name="nume" size="10"><br>
+            Prenume: <input type="text" name="prenume" size="10"><br>
+            Varsta: <input type="number" name="varsta" size="10"><br>
+            Salariu brut: <input type="number" name="salar_brut" size="10"><br>
+            <br>
+            <input type="SUBMIT" value="Insereaza">
+            <input type="RESET" value="Reset">
+        </form>
+    </center>
+
+    <input type="button" value="Go back" onclick="window.location.href='index.php'" />
+
+</body>
+
+</html>

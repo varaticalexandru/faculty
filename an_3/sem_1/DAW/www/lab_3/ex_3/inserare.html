@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Laborator 2</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <center>
+        <head>
+            <H1>Inserare evidenta carte noua</H1>
+        </head>
+    </center>
+
+    <center>
+        <form method="POST" action="inserare.php">
+            Titlu: <input type="text" name="titlu_carte" size="10"><br>
+            Autor: <input type="text" name="autor_carte" size="10"><br>
+            Editura: <input type="text" name="editura" size="10"><br>
+            Cod ISBN: <input type="text" name="cod_isbn" size="10"><br>
+            Anul aparitiei: <input type="number" name="anul_aparitiei" size="10"><br>
+            Nr. exemplare stoc: <input type="number" name="nr_exemplare_stoc" size="10"><br>
+            Pret: <input type="number" name="pret" size="10"><br>
+            Nr. exemplare vandute: <input type="number" name="nr_exemplare_vandute" size="10"><br>
+            <br>
+            <input type="SUBMIT" value="Insereaza">
+            <input type="RESET" value="Reset">
+        </form>
+    </center>
+
+    <input type="button" value="Go back" onclick="window.location.href='index.php'" />
+
+</body>
+
+</html>

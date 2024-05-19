@@ -1,0 +1,1141 @@
+ ========== 2.1. Configuratia de baza ==========
+
+ --- BR-SW1 ---
+
+en
+conf t
+hostname BR-R1native
+do wr
+
+username admin secret Admin123
+enable secret Admin123
+line con 0
+login local     
+line vty 0 15
+login local	
+
+ip domain-name savnet.ro
+crypto key generate rsa  !generate RSA keys (1024)
+ip ssh version 2
+line vty 0 4
+transport input ssh
+login local
+
+banner motd #Accesul neautorizat este interzis!#
+
+--- BR-R1 ---
+en
+conf t
+hostname BR-R1
+do wr
+
+username admin secret Admin123
+enable secret Admin123
+line con 0
+login local    
+line vty 0 15
+login local	
+
+ip domain-name savnet.ro
+crypto key generate rsa  !generate RSA keys (1024)
+ip ssh version 2
+line vty 0 4
+transport input ssh
+login local
+
+banner motd #Accesul neautorizat este interzis!#
+
+int g0/0/0
+ip address dhcp
+
+
+
+ ========== 2.2. Configurarea VLAN-urilor ==========
+
+ --- BR-SW1 ---
+vlan 10
+name OFFICE_PC
+vlan 11
+name OFFICE_WIFI
+vlan 13
+name GUEST
+vlan 99
+name NATIVE_WIFI_MGMT
+vlan 100
+name MGMT
+vlan 101
+name BlackHole
+
+
+ ========== 2.3. Configurarea interfetelor de tip Trunk ==========
+
+ --- BR-SW1 ---
+int g0/1
+switchport mode trunk
+switchport trunk allowed vlan 10,11,13,99,100,101
+switchport trunk native vlan 99
+
+int fa0/1
+switchport mode trunk
+switchport trunk native vlan 99
+
+int gi0/2
+switchport mode trunk
+switchport trunk native vlan 99
+
+
+ ========== 2.4. Configurarea interfetelor de tip Access ==========
+
+ --- BR-SW1 ---
+int range fa0/11-12
+switchport mode access
+switchport access vlan 10
+
+
+ ========== 2.5. Inter-VLAN Routing  ==========
+
+ --- BR-R1 ---
+int g0/0/1.10
+encapsulation dot1q 10
+ip address 10.100.10.1 255.255.255.0
+
+int g0/0/1.11
+encapsulation dot1q 11
+ip address 10.100.11.1 255.255.255.0
+
+int g0/0/1.13
+encapsulation dot1q 13
+ip address 10.100.13.1 255.255.255.0
+
+int g0/0/1.99
+encapsulation dot1q 99
+ip address 10.100.99.1 255.255.255.0
+
+int g0/0/1.100
+encapsulation dot1q 100
+ip address 10.100.100.1 255.255.255.0
+
+
+ ========== 2.6. STP ==========
+
+ --- BR-SW1 ---
+spanning-tree mode rapid-pvst
+spanning-tree vlan 1,10,11,13,99,100,101 root primary
+
+int range f0/2-10,f0/11-12,f0/13-24
+spanning-tree portfast
+spanning-tree bpduguard enable
+
+do wr
+do copy running-config startup-config
+
+
+
+ ========== 2.7. DHCP ==========
+
+ --- BR-R1 ---
+int range g0/0/1.10,g0/0/1.11,g0/0/1.13
+ip helper-address 10.1.10.50
+
+
+ ========== 2.8. Switch Security ==========
+
+ -- BR-SW1 ---
+int range fa0/2-10,fa0/13-24
+switchport access vlan 101
+sh
+
+int range fa0/11-12
+switchport port-security
+switchport port-security maximum 3
+switchport port-security violation protect
+switchport port-security mac-address sticky
+
+
+
+
+
+
+
+ ========== 3.1. Configurarea de baza ==========
+
+ --- CO-ASW1 ---
+en
+conf t
+hostname CO-ASW1
+do wr
+
+username admin secret Admin123
+enable secret Admin123
+line con 0
+login local     
+line vty 0 15
+login local	
+
+ip domain-name savnet.ro
+crypto key generate rsa
+ip ssh version 2
+line vty 0 4
+transport input ssh
+login local
+
+banner motd #Accesul neautorizat este interzis!#
+
+
+
+ --- CO-ASW2 ---
+en
+conf t
+hostname CO-ASW2
+do wr
+
+username admin secret Admin123
+enable secret Admin123
+line con 0
+login local     
+line vty 0 15
+login local	
+
+ip domain-name savnet.ro
+crypto key generate rsa
+ip ssh version 2
+line vty 0 4
+transport input ssh
+login local
+
+banner motd #Accesul neautorizat este interzis!#
+
+
+
+ --- CO-CSW1 ---
+en
+conf t
+hostname CO-CSW1
+do wr
+
+username admin secret Admin123
+enable secret Admin123
+line con 0
+login local     
+line vty 0 15
+login local	
+
+ip domain-name savnet.ro
+crypto key generate rsa
+ip ssh version 2
+line vty 0 4
+transport input ssh
+login local
+
+banner motd #Accesul neautorizat este interzis!#
+
+
+
+ --- CO-R1 ---
+en
+conf t
+hostname CO-R1
+do wr
+
+username admin secret Admin123
+enable secret Admin123
+line con 0
+login local     
+line vty 0 15
+login local	
+
+ip domain-name savnet.ro
+crypto key generate rsa
+ip ssh version 2
+line vty 0 4
+transport input ssh
+login local
+
+banner motd #Accesul neautorizat este interzis!#
+
+
+ --- CO-R2 ---
+en
+conf t
+hostname CO-R2
+do wr
+
+username admin secret Admin123
+enable secret Admin123
+line con 0
+login local     
+line vty 0 15
+login local	
+
+ip domain-name savnet.ro
+crypto key generate rsa
+ip ssh version 2
+line vty 0 4
+transport input ssh
+login local
+
+banner motd #Accesul neautorizat este interzis!#
+
+
+
+ ========== 3.2. Configurarea VLAN-urilor ==========
+
+ --- CO-CSW1, CO-ASW1, CO-ASW2 ---
+vlan 8
+name SERVERS_LOCAL
+vlan 10
+name OFFICE_PC
+vlan 11
+name OFFICE_WIFI
+vlan 13
+name GUEST
+vlan 99
+name NATIVE_WIFI_MGMT
+vlan 100
+name MGMT
+vlan 101
+name BlackHole
+
+
+ ========== 3.3. Configurarea porturilor de tip trunk  ==========
+
+ --- CO-CSW1 ---
+int g1/0/1
+switchport mode trunk
+switchport trunk allowed vlan 8,10,11,13,99,100
+switchport trunk native vlan 99
+
+int g1/0/2
+switchport mode trunk
+switchport trunk allowed vlan 8,10,11,13,99,100
+switchport trunk native vlan 99
+
+int range g1/0/3-6
+switchport mode trunk
+
+int gi1/0/7
+switchport mode trunk
+switchport trunk native vlan 99
+
+
+ --- CO-ASW1, CO-ASW2 ---
+int range g0/1-2
+switchport mode trunk
+
+int fa0/1
+switchport mode trunk
+switchport trunk native vlan 99
+
+
+
+
+
+ ========== 3.4. Configurarea porturilor de tip access ==========
+
+ --- CO-ASW1, CO-ASW2 ---
+int fa0/2
+switchport mode access
+switchport access vlan 10
+
+ --- CO-CSW1 ---
+int g1/0/8
+switchport mode access
+switchport access vlan 8
+
+
+
+ ========== 3.5. Configurarea inter-VLAN Routing  ==========
+
+ --- CO-R1 ---
+int g0/0/1.8
+encapsulation dot1q 8
+ip address 10.10.8.11 255.255.255.0
+
+int g0/0/1.10
+encapsulation dot1q 10
+ip address 10.10.10.11 255.255.255.0
+
+int g0/0/1.11
+encapsulation dot1q 11
+ip address 10.10.11.11 255.255.255.0
+
+int g0/0/1.13
+encapsulation dot1q 13
+ip address 10.10.13.11 255.255.255.0
+
+int g0/0/1.100
+encapsulation dot1q 100
+ip address 10.10.100.11 255.255.255.0
+
+int g0/0/1.99
+encapsulation dot1q 99
+ip address 10.10.99.11 255.255.255.0
+
+ --- CO-R2 ---
+int g0/0/1.8
+encapsulation dot1q 8
+ip address 10.10.8.12 255.255.255.0
+
+int g0/0/1.10
+encapsulation dot1q 10
+ip address 10.10.10.12 255.255.255.0
+
+int g0/0/1.11
+encapsulation dot1q 11
+ip address 10.10.11.12 255.255.255.0
+
+int g0/0/1.13
+encapsulation dot1q 13
+ip address 10.10.13.12 255.255.255.0
+
+int g0/0/1.100
+encapsulation dot1q 100
+ip address 10.10.100.12 255.255.255.0
+
+int g0/0/1.99
+encapsulation dot1q 99
+ip address 10.10.99.12 255.255.255.0
+
+
+ --- CO-CSW1 ---
+int vlan 100
+ip address 10.10.100.100 255.255.255.0
+ip default-gateway 10.10.100.1
+
+ --- CO-ASW1 ---
+int vlan 100
+ip address 10.10.100.101 255.255.255.0
+ip default-gateway 10.10.100.1
+
+ --- CO-ASW2 ---
+int vlan 100
+ip address 10.10.100.102 255.255.255.0
+ip default-gateway 10.10.100.1
+
+
+
+
+ ========== 3.6. Configurarea STP ==========
+
+ --- CO-CSW1 ---
+spanning-tree mode rapid-pvst
+spanning-tree vlan 8,10,11,13,99,100 root primary
+spanning-tree vlan 8,10,11,13,99,100 priority 4096
+
+int g1/0/8
+spanning-tree portfast
+spanning-tree bpduguard enable
+
+ --- CO-ASW1 ---
+spanning-tree mode rapid-pvst
+
+int fa0/2
+spanning-tree portfast
+spanning-tree bpduguard enable
+
+ --- CO-ASW2 ---
+spanning-tree mode rapid-pvst
+
+int fa0/2
+spanning-tree portfast
+spanning-tree bpduguard enable
+
+
+
+ ========== 3.7. Configurarea Etherchannel ==========
+ --- CO-CSW1 ---
+int range g1/0/3-4
+sh
+channel group 1 mode active
+no sh
+
+interface port-channel 1
+switchport mode trunk
+switchport trunk allowed vlan 8,10,11,13,99,100
+switchport trunk native vlan 99
+
+
+int range g1/0/5-6
+sh
+channel group 2 mode desirable
+no sh
+
+interface port-channel 2
+switchport mode trunk
+switchport trunk allowed vlan 8,10,11,13,99,100
+switchport trunk native vlan 99
+
+
+
+ --- CO-ASW1 ---
+int range g0/1-2
+sh
+channel group 1 mode passive
+no sh
+
+interface port-channel 1
+switchport mode trunk
+switchport trunk allowed vlan 8,10,11,13,99,100
+switchport trunk native vlan 99
+
+
+ --- CO-ASW2 ---
+int range g0/1-2
+sh
+channel group 2 mode auto
+no sh
+
+interface port-channel 2
+switchport mode trunk
+switchport trunk allowed vlan 8,10,11,13,99,100
+switchport trunk native vlan 99
+
+
+
+
+ ========== 3.8. Configurarea DHCP ==========
+
+ --- CO-R1, CO-R2 ---
+ip dhcp excluded-address 10.10.10.0 10.10.10.19
+ip dhcp excluded-address 10.10.11.0 10.10.11.19
+ip dhcp excluded-address 10.10.13.0 10.10.13.19
+
+ip dhcp pool VLAN_10
+network 10.10.10.0 255.255.255.0
+default-router 10.10.10.1
+domain-name savnet.ro
+dns-server 10.1.8.50
+exit
+
+ip dhcp pool VLAN_11
+network 10.10.11.0 255.255.255.0
+default-router 10.10.11.1
+domain-name savnet.ro
+dns-server 10.1.8.50
+exit
+
+ip dhcp pool VLAN_13
+network 10.10.13.0 255.255.255.0
+default-router 10.10.13.1
+domain-name savnet.ro
+dns-server 10.1.8.50
+exit
+
+
+ ========== 3.9. Configurarea HSRP ==========
+
+ --- CO-R1 ---
+int g0/0/1.8
+standby version 2
+standby 8 ip 10.10.8.1
+standby 8 priority 110
+standby 8 preempt
+
+int g0/0/1.10
+standby version 2
+standby 10 ip 10.10.10.1
+standby 10 priority 110
+standby 10 preempt
+
+int g0/0/1.11
+standby version 2
+standby 11 ip 10.10.11.1
+standby 11 priority 110
+standby 11 preempt
+
+---
+
+int g0/0/1.99
+standby version 2
+standby 99 ip 10.10.99.1
+standby 99 priority 100
+
+int g0/0/1.13
+standby version 2
+standby 13 ip 10.10.13.1
+standby 13 priority 100
+
+int g0/0/1.100
+standby version 2
+standby 100 ip 10.10.100.1
+standby 100 priority 100
+
+
+
+ --- CO-R2 ---
+int g0/0/1.99
+standby version 2
+standby 99 ip 10.10.99.1
+standby 99 priority 110
+standby 99 preempt
+
+int g0/0/1.13
+standby version 2
+standby 13 ip 10.10.13.1
+standby 13 priority 110
+standby 13 preempt
+
+int g0/0/1.100
+standby version 2
+standby 100 ip 10.10.100.1
+standby 100 priority 110
+standby 100 preempt
+
+---
+
+int g0/0/1.8
+standby version 2
+standby 8 ip 10.10.8.1
+standby 8 priority 100
+
+int g0/0/1.10
+standby version 2
+standby 10 ip 10.10.10.1
+standby 10 priority 100
+
+int g0/0/1.11
+standby version 2
+standby 11 ip 10.10.11.1
+standby 11 priority 100
+
+
+
+
+ ========== 3.10. Configurarea Switch Security ==========
+
+ --- CO-CSW1 ---
+int range g1/0/9-24, g1/1/1-4
+switchport mode access
+switchport access vlan 101
+sh
+
+int g1/0/8
+switchport port-security maximum 1
+switchport port-security violation restrict
+switchport port-security mac-address 00D0.FF91.1540
+
+
+ --- CO-ASW1, CO-ASW2 ---
+int range fa0/3-24
+switchport mode access
+switchport access vlan 101
+sh
+
+int fa0/2
+switchport port-security maximum 3
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+
+
+ ========== 3.12. Configurarea rutarii  ==========
+
+ --- CO-R1, CO-R2 ---
+ip route 10.1.0.0 255.255.0.0 1.10.0.1
+ip route 10.100.0.0 255.255.0.0 1.10.0.1
+ip route 0.0.0.0 0.0.0.0 1.10.0.1
+
+
+
+
+
+ ========== 4.1. Configurarea de baza  ==========
+
+
+ --- DC-ASW1 ---
+en
+conf t
+hostname DC-ASW1
+do wr
+
+username admin secret Admin123
+enable secret Admin123
+line con 0
+login local     
+line vty 0 15
+login local
+
+ip domain-name savnet.ro
+crypto key generate rsa  !generate RSA keys (1024)
+ip ssh version 2
+line vty 0 4
+transport input ssh
+login local
+
+banner motd #Accesul neautorizat este interzis!#
+
+
+ --- DC-ASW2 ---
+en
+conf t
+hostname DC-ASW2
+do wr
+
+username admin secret Admin123
+enable secret Admin123
+line con 0
+login local    
+line vty 0 15
+login local	
+
+ip domain-name savnet.ro
+crypto key generate rsa  !generate RSA keys (1024)
+ip ssh version 2
+line vty 0 4
+transport input ssh
+login local
+
+banner motd #Accesul neautorizat este interzis!#
+
+
+ --- DC-CSW1 ---
+en
+conf t
+hostname DC-CSW1
+do wr
+
+username admin secret Admin123
+enable secret Admin123
+line con 0
+login local    
+line vty 0 15
+login local	
+
+ip domain-name savnet.ro
+crypto key generate rsa  !generate RSA keys (1024)
+ip ssh version 2
+line vty 0 4
+transport input ssh
+login local
+
+banner motd #Accesul neautorizat este interzis!#
+
+---
+int g1/0/1
+no switchport
+ip address 10.1.2.10 255.255.255.0
+
+
+
+ --- DC-CSW2 ---
+en
+conf t
+hostname DC-CSW2
+do wr
+
+username admin secret Admin123
+enable secret Admin123
+line con 0
+login local     
+line vty 0 15
+login local	
+
+ip domain-name savnet.ro
+crypto key generate rsa  !generate RSA keys (1024)
+ip ssh version 2
+line vty 0 4
+transport input ssh
+login local
+
+banner motd #Accesul neautorizat este interzis!#
+
+---
+int g1/0/1
+no switchport
+ip address 10.1.2.13 255.255.255.0
+
+
+
+ --- DC-R1 ---
+en
+conf t
+hostname DC-R1
+do wr
+
+username admin secret Admin123
+enable secret Admin123
+line con 0
+login local    
+line vty 0 15
+login local	
+
+ip domain-name savnet.ro
+crypto key generate rsa  !generate RSA keys (1024)
+ip ssh version 2
+line vty 0 4
+transport input ssh
+login local
+
+banner motd #Accesul neautorizat este interzis!#
+
+---
+int g0/0/0
+ip address 1.1.0.2 255.255.255.252
+
+int g0/0/1
+ip address 10.1.2.11 255.255.255.0
+
+
+
+ --- DC-R2 ---
+en
+conf t
+hostname DC-R2
+do wr
+
+username admin secret Admin123
+enable secret Admin123
+line con 0
+login local     
+line vty 0 15
+login local	
+
+ip domain-name savnet.ro
+crypto key generate rsa  !generate RSA keys (1024)
+ip ssh version 2
+line vty 0 4
+transport input ssh
+login local
+
+banner motd #Accesul neautorizat este interzis!#
+
+---
+int g0/0/0
+ip address 1.1.0.6 255.255.255.252
+
+int g0/0/1
+ip address 10.1.2.12 255.255.255.0
+
+
+
+ ========== 4.2. Configurarea VLAN-urilor  ==========
+ 
+--- DC-CSW1, DC-CSW2, DC-ASW1, DC-ASW2 ---
+vlan 8
+name DNS_SERVERS
+vlan 9
+name RADIUS_SERVERS
+vlan 10
+name DHCP_SERVERS
+vlan 11
+name WEB_SERVERS
+vlan 99
+name NATIVE
+vlan 100
+name MGMT
+vlan 101
+name BlackHole
+
+
+
+ ========== 4.3. Configurarea porturilor de tip trunk  ==========
+
+ --- DC-CSW1, DC-CSW2 ---
+int g1/0/6
+switchport mode dynamic desirable
+switchport trunk allowed vlan 8,9,10,11,99,100 
+switchport trunk native vlan 99
+
+int g1/0/7
+switchport mode trunk
+switchport trunk allowed vlan 8,9,10,11,99,100 
+switchport trunk native vlan 99
+
+int range g1/0/2-5
+switchport mode trunk
+switchport trunk allowed vlan 8,9,10,11,99,100 
+switchport trunk native vlan 99
+
+
+
+ ========== 4.4. Configurarea porturilor de tip acces  ==========
+
+ --- DC-ASW1 ---
+int fa0/1
+switchport mode access
+switchport access vlan 8
+
+int fa0/2
+switchport mode access
+switchport access vlan 9
+
+ --- DC-ASW2 ---
+int fa0/2
+switchport mode access
+switchport access vlan 10
+
+int fa0/1
+switchport mode access
+switchport access vlan 11
+
+
+
+ ========== 4.5. Configurarea inter-VLAN routing  ==========
+
+ --- DC-CSW1 ---
+int vlan 8
+ip address 10.1.8.11 255.255.255.0
+
+int vlan 9
+ip address 10.1.9.11 255.255.255.0
+
+int vlan 10
+ip address 10.1.10.11 255.255.255.0
+
+int vlan 11
+ip address 10.1.11.11 255.255.255.0
+
+int vlan 99
+ip address 10.1.99.11 255.255.255.0
+
+int vlan 100
+ip address 10.1.100.11 255.255.255.0
+
+
+
+ --- DC-CSW2 ---
+int vlan 8
+ip address 10.1.8.12 255.255.255.0
+
+int vlan 9
+ip address 10.1.9.12 255.255.255.0
+
+int vlan 10
+ip address 10.1.10.12 255.255.255.0
+
+int vlan 11
+ip address 10.1.11.12 255.255.255.0
+
+int vlan 99
+ip address 10.1.99.12 255.255.255.0
+
+int vlan 100
+ip address 10.1.100.12 255.255.255.0
+
+
+
+ --- DC-ASW1 ---
+ip default-gateway 10.1.100.1
+
+int vlan 100
+ip address 10.1.100.101 255.255.255.0
+
+
+ --- DC-ASW2 ---
+ip default-gateway 10.1.100.1
+
+int vlan 100
+ip address 10.1.100.102 255.255.255.0
+
+
+
+ ========== 4.6. Configurarea STP  ==========
+
+--- DC-CSW1 ---
+spanning-tree mode rapid-pvst
+spanning-tree vlan 8,9,100 root primary
+spanning-tree vlan 8,9,100 priority 8192
+spanning-tree vlan 10,11,99 priority 4096
+
+--- DC-CSW2 ---
+spanning-tree mode rapid-pvst
+spanning-tree vlan 10,11,99 root primary
+spanning-tree vlan 10,11,99 priority 8192
+spanning-tree vlan 8,9,100 priority 4096
+
+
+--- DC-ASW1, DC-ASW2 ---
+int range fa0/1-2
+spanning-tree portfast
+spanning-tree bpduguard enable
+
+
+ ========== 4.7. Configurarea Etherchannel  ==========
+
+--- DC-CSW1 ---
+int range g1/0/2-5
+sh
+channel group 1 mode active
+no sh
+
+interface port-channel 1
+switchport mode trunk
+switchport trunk allowed vlan 8,9,10,11,99,100
+switchport trunk native vlan 99
+
+
+ --- DC-CSW2 ---
+int range g1/0/2-5
+sh
+channel group 1 mode passive
+no sh
+
+interface port-channel 1
+switchport mode trunk
+switchport trunk allowed vlan 8,9,10,11,99,100
+switchport trunk native vlan 99
+
+
+
+
+ ========== 4.8. Configurarea DHCP  ==========
+
+
+ ========== 4.9. Configurarea HSRP  ==========
+
+
+ --- DC-R1 ---
+int g0/0/1
+standby version 2
+standby 1 ip 10.1.2.1
+standby 1 priority 109
+standby 1 preempt
+
+
+ --- DC-R2---
+int g0/0/1
+standby version 2
+standby 1 ip 10.1.2.1
+standby 1 priority 100
+
+---
+---
+
+ --- DC-CSW1---
+int vlan 8
+standby 8 ip 10.1.8.1
+standby 8 priority 109
+standby 8 preempt
+
+int vlan 9
+standby 9 ip 10.1.9.1
+standby 9 priority 109
+standby 9 preempt
+
+int vlan 100
+standby 100 ip 10.1.100.1
+standby 100 priority 109
+standby 100 preempt
+
+ ---
+int vlan 10
+standby 10 ip 10.1.10.1
+standby 10 priority 100
+
+int vlan 11
+standby 11 ip 10.1.11.1
+standby 11 priority 100
+
+int vlan 99
+standby 99 ip 10.1.99.1
+standby 99 priority 100
+
+
+
+ --- DC-CSW2---
+int vlan 10
+standby 10 ip 10.1.10.1
+standby 10 priority 109
+standby 10 preempt
+
+int vlan 11
+standby 11 ip 10.1.11.1
+standby 11 priority 109
+standby 11 preempt
+
+int vlan 99
+standby 99 ip 10.1.99.1
+standby 99 priority 109
+standby 99 preempt
+
+ ---
+int vlan 8
+standby 8 ip 10.1.8.1
+standby 8 priority 100
+
+int vlan 9
+standby 9 ip 10.1.9.1
+standby 9 priority 100
+
+int vlan 100
+standby 100 ip 10.1.100.1
+standby 100 priority 100
+
+
+
+ ========== 4.10. Configurarea Switch Security  ==========
+
+
+--- DC-CSW1, DC-CSW2 ---
+int range g1/0/8-24, g1/1/1-4
+switchport mode access
+switchport access vlan 99
+sh
+
+
+--- DC-ASW1, DC-ASW2 ---
+int range fa0/3-24
+switchport mode access
+switchport access vlan 99
+sh
+
+ ---
+ ---
+
+ --- DC-ASW1 ---
+int fa0/1
+switchport port-security maximum 1
+switchport port-security violation restrict
+switchport port-security mac-address 000A.F3DB.73A3
+
+int fa0/2
+switchport port-security maximum 1
+switchport port-security violation restrict
+switchport port-security mac-address 000A.F3D4.6CC4
+
+
+ --- DC-ASW2 ---
+int fa0/2
+switchport port-security maximum 1
+switchport port-security violation restrict
+switchport port-security mac-address 0001.6383.D6E4
+
+int fa0/1
+switchport port-security maximum 1
+switchport port-security violation restrict
+switchport port-security mac-address 0009.7CB6.02AE
+
+
+
+ ========== 4.12. Configurarea rutarii  ==========
+
+ --- DC-CSW1, DC-CSW2 ---
+ip route 0.0.0.0 0.0.0.0 10.1.2.1
+
+ --- DC-R1 ---
+ip route 0.0.0.0 0.0.0.0 1.1.0.1
+
+ --- DC-R2 ---
+ip route 0.0.0.0 0.0.0.0 1.1.0.5
+
+ ---
+ ---
+ 
+--- DC-R1, DC-R2 ---
+ip route 10.1.8.0 255.255.255.0 GigabitEthernet0/0/1
+ip route 10.1.9.0 255.255.255.0 GigabitEthernet0/0/1
+ip route 10.1.10.0 255.255.255.0 GigabitEthernet0/0/1
+ip route 10.1.11.0 255.255.255.0 GigabitEthernet0/0/1
+ip route 10.1.99.0 255.255.255.0 GigabitEthernet0/0/1
+ip route 10.1.100.0 255.255.255.0 GigabitEthernet0/0/1
+
+
+
+ ========== EXTRA – Syslog  ==========
+
+--- CO-ASW1, CO-ASW1, CO-CSW1, CO-R1, CO-R2 ---
+logging 10.10.8.50
+service timestamps log datetime msec
+
+show running-config | include logging
+
+

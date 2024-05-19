@@ -1,0 +1,18 @@
+server:
+  port: 8000
+
+spring:
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: false
+
+app:
+  jwt:
+    secret:
+      key: "somethingverysecure_somethingverysecure_somethingverysecure_somethingverysecure"
+    token-prefix: "Bearer"
+    expiration-after-days: 14
+
+  session:
+    remember-me:
+      secret-key: "somethingverysecure"

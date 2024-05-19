@@ -1,0 +1,115 @@
+en
+conf t
+vlan 10
+name Faculty/Staff
+exit
+
+vlan 20
+name Students
+exit
+
+vlan 30
+name Guest(Default)
+exit
+
+vlan 99
+name Management&Native
+exit
+
+vlan 150
+name VOICE
+
+do wr
+
+
+interface f0/6
+switchport mode access
+switchport access vlan 30
+
+interface f0/11
+switchport mode access
+switchport access vlan 10
+
+interface f0/18
+switchport mode access
+switchport access vlan 20
+
+interface f0/11
+switchport mode access
+switchport access vlan 150
+
+interface f0/11
+mls qos trust cos
+switchport voice vlan 150
+
+
+
+
+interface range g0/1-2
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30
+no sh
+
+interface g0/1
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30
+no sh
+
+interface range g0/2
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30
+no sh
+
+
+### do sh vlan brief ###
+
+
+-----------------------------------------------------
+
+
+en
+conf t
+
+vlan 10
+name Admin
+exit
+
+vlan 20
+name Accounts
+exit
+
+vlan 30
+name HR
+exit
+
+vlan 40
+name Voice
+exit
+
+vlan 99
+name Management
+exit
+
+vlan 100
+name Native
+
+do wr
+
+
+interface range fa0/1
+switchport mode access
+switchport access vlan 10
+
+interface range fa0/2
+switchport mode access
+switchport access vlan 20
+
+interface range fa0/3
+switchport mode access
+switchport access vlan 30
+
+
+
+
+

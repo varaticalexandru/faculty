@@ -1,0 +1,304 @@
+Instructiuni : 
+Pas 1.A. Configurati cu adrese IP PC-urile (specificati si IP de la serverul DNS) 
+       B. Creati Vlan 10(name Server-1-10), 20(name Server-11-20) , 30 (name Server-21-30) , 40(name Server-31-40) pe fiecare SW din retea (nivel access , distribution core)
+
+
+Pas 2. Configurati pe toate SW-urile Rapid PVST
+	Sw(config)#spanning-tree mode rapid-pvst
+
+Pas 3.Configurati Core-MLS1 root bridge pentru vlan 10, 20 . Secondary vlan 30,40
+Sw(config)#spanning-tree vlan 10,20 root primary
+Sw(config)#spanning-tree vlan 30,40 root secondary
+
+Pas 4 .Configurati Core-MLS2 root bridge pentru vlan 30,40 . Secondary vlan 10,20
+Sw(config)#spanning-tree vlan 10,20 root secondary
+Sw(config)#spanning-ttree vlan 30,40 root primary
+
+pas 5. Activati pe Porturile fa0/23-24 portfast si BDPUguard
+Sw(config)#interface range fa0/23-24 
+Sw(config-if)#spanning-tree portfast enable ( datorita faptului ca am activat Rapid PVST optiunea portfast este activata in mod implicit pe fiecare port access) 
+Sw(config-if)#spanning-tree bpduguard enable
+
+Pas 6. Configurati fa0/23-24 de pe fiecare switch nivel access -switchport mode access cu access la Vlan-ul din care face parte .
+SW1	
+interface range f0/23-24 
+description Link to Servers 1-10
+switchport mode access
+switchport access vlan 10 
+
+SW2
+interface range f0/23-24 
+description Link to Servers 11-20
+switchport mode access
+switchport access vlan 20 
+
+SW3
+interface range f0/23-24 
+description Link to Servers 21-30
+switchport mode access
+switchport access vlan 30
+
+sw4
+interface range f0/23-24 
+description Link to Servers 31-40
+switchport mode access
+switchport access vlan 40  
+
+pas 7. Configurati toate legaturile intre SW-uri ca porturi trunk 
+SW1
+interfacfe range fa0/1-2
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+
+SW2
+interfacfe range fa0/1-2
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+
+SW3
+interfacfe range fa0/1-2
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+
+SW4
+interfacfe range fa0/1-2
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+
+MLS1
+interfacfe range fa0/1-4,f0/24
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+
+MLS2
+interfacfe range fa0/1-4,f0/24
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+_________________________________________________________________________
+pas8. Configurati toate Etherchannels din topologie 
+SW1-SW2
+interface range fa0/1-2
+channel-group 1 mode active
+exit
+interface port-channel 1 
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+
+SW2-SW3
+interface range fa0/12-13
+channel-group 2 mode on
+exit
+interface port-channel 2 
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+
+SW3-SW4
+interface range fa0/10-11
+channel-group 3 mode active
+exit
+interface port-channel 3 
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+
+MLS1 - Core-MlS1 (pe interfetele de MLS trebuie specificata encapsularea dot1q, daca nu faci asta vei primi o eroare iar EtherChannel-ul nu se va crea asta se datoreaza versiunii IOS Version 12.2(25r) ) MLS-R1 are versiunea 16.2 nu mai necesita specificatia dot1q (e implicita) 
+interface range fa0/10-12
+channel-group 5 mode desirable
+exit
+interface port-channel 5
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+
+MLS2 - Core-MLS2 
+interface f0/24 
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+
+interface range fa0/10-12
+channel-group 4 mode desirable
+exit
+interface port-channel 4
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+
+Core-MLS1 - Core-MLS2
+interface range f0/15,f0/24 (doar pe Core-MLS1 si Core-MLS2 avem nevoie de port 15 trunk)
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+
+interface range fa0/1-3
+channel-group 6 mode active
+exit
+interface port-channel 6
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+
+
+MLS-R1 - MLS- R2 
+
+interface  g1/0/1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40
+__________________________________________________________________________
+
+Inter-VlanRouting  + HSRP 
+pas 9 . Configurati interfetele vlan 10,20,30,40 cu adresele IP corespunzatoare 
+Core-MLS1 192.168.x.2 x= numar vlan /24
+
+MLS1(config)#ip routing
+
+interface vlan 10 
+ip address 192.168.10.2 255.255.255.0
+description Active to VLAN 10
+
+interface vlan 20 
+ip address 192.168.20.2 255.255.255.0
+description Active to VLAN 20
+
+interface vlan 30 
+ip address 192.168.30.2 255.255.255.0
+description Standby to VLAN 30
+
+interface vlan 40 
+ip address 192.168.40.2 255.255.255.0
+description Standby to VLAN 40
+
+
+Core-MLS2 
+
+MLS2(config)#ip routing
+
+interface vlan 10 
+ip address 192.168.10.3 255.255.255.0
+description Standby to VLAN 10
+
+interface vlan 20 
+ip address 192.168.20.3 255.255.255.0
+description Standby to VLAN 20
+
+interface vlan 30 
+ip address 192.168.30.3 255.255.255.0
+description Active to VLAN 30
+
+interface vlan 40 
+ip address 192.168.40.3 255.255.255.0
+description Active to VLAN 40
+
+pas 10 . Activam HSRP pe Core-MLS1 si Core-MLS2 ; IP standby ( 192.168.x.1) (In interiorul retelei)
+
+Core-MLS1 vlan 10 si 20 Active  30,40 - Standby 
+
+interface vlan 10
+
+standby version 2 
+standby 10 ip 192.168.10.1
+standby 10 priority 109
+standby 10 preemption
+standby 10 track g1/0/3
+
+interface vlan 20
+standby version 2 
+standby 20 ip 192.168.20.1
+standby 20 priority 109
+standby 20 preemption
+standby 20 track g1/0/3
+
+interface vlan 30
+standby version 2 
+standby 30 ip 192.168.30.1
+standby 30 preemption
+
+interface vlan 40
+standby version 2 
+standby 40 ip 192.168.40.1
+standby 40 preemption
+
+
+
+COre-MLS2  vlan 10 si 20 Standby vlan 30,40 -  Active  
+
+interface vlan 10
+
+standby version 2 
+standby 10 ip 192.168.10.1
+standby 10 preemption
+
+interface vlan 20
+standby version 2 
+standby 20 ip 192.168.20.1
+standby 20 preemption
+
+
+interface vlan 30
+standby version 2 
+standby 30 ip 192.168.30.1
+standby 30 priority 109
+standby 30 preemption
+standby 20 track g1/0/3
+
+interface vlan 40
+standby version 2 
+standby 40 ip 192.168.40.1
+standby 40 priority 109
+standby 40 preemption
+standby 20 track g1/0/3
+
+pas 11 . Activam HSRP pe Core-MLS1 si Core-MLS2 ; IP standby ( 192.168.x.1) (In exteriorul retelei - nu-i necesar dar ii o solutie mai eleganta decat variante cu rute statice si distante administrative)
+
+Core-MLS1
+interface g1/0/3
+ip address 10.10.10.2 255.255.255.0
+description Active Router
+no shutdown
+
+standby version 2
+standby priority 109
+standby ip 10.10.10.1
+standby track g1/0/1
+standby preemption 
+
+
+Core-MLS2
+interface g1/0/3
+ip address 10.10.10.3 255.255.255.0
+description Standby Router
+no shutdown
+
+standby version 2
+standby ip 10.10.10.1
+standby preemption 
+
+pas 12 : Activam RIP 
+
+Core-MLS1 
+Core-MLS1(config)#
+router-rip
+version 2 
+no auto-summary
+network 192.168.10.0
+network 192.168.20.0
+network 192.168.30.0
+network 192.168.40.0
+network 10.10.10.0
+
+Core-MLS2 
+Core-MLS1(config)#
+router-rip
+version 2 
+no auto-summary
+network 192.168.10.0
+network 192.168.20.0
+network 192.168.30.0
+network 192.168.40.0
+network 10.10.10.0
+
+
+pas 13: Restul a fost deja configurat cu RIP, verificati conectivitatea : 
+PC0  C:\>ping 8.8.8.8
